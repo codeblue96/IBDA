@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-transparent pt-3 sticky-top">
+  <div class="container-fluid">
+    <!-- Logo on the left for mobile and centered for large screens -->
+    <a class="navbar-brand d-lg-none" routerLink="/">
+      <div class="menu-title">
+        <a routerLink="/" aria-label="Back to homepage" title="Back to homepage">
+          <h1 class="menu-heading">Ibda</h1>
+        </a>
+      </div>
+    </a>
+    <!-- Hamburger menu on the right for mobile -->
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapsible content (logo and nav links) -->
+    <div class="collapse navbar-collapse main-nav nav-side-pd" id="navbarContent">
+      <!-- Navigation links (left side) -->
+      <ul class="navbar-nav me-auto nav-left">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/services">Services</a>
+        </li>
+      </ul>
+      <!-- Logo for large screens (centered) -->
+      <a class="navbar-brand d-none d-lg-block mx-auto" routerLink="#">
+        <div class="menu-title">
+          <a routerLink="/" aria-label="Back to homepage" title="Back to homepage">
+            <h1 class="menu-heading">Ibda.</h1>
+          </a>
+        </div>
+      </a>
+      <!-- Navigation links (right side) -->
+      <ul class="navbar-nav ms-auto nav-right">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/work">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

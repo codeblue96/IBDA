@@ -1,0 +1,100 @@
+.main-container {
+  overflow: hidden;
+  background: linear-gradient(to top, #3D8080, #80deea);
+  background-size: cover;
+  background-position: center;
+  max-width: 92%;
+  margin: 10px auto;
+  border-radius: 60px;
+  z-index: 1000;
+  padding: 30px;
+}
+
+.sec {
+  margin-bottom: 7rem;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 4rem 18px !important;
+  border-radius: 45px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  border: 1px solid #a5d6f7;
+  border-radius: 9px;
+  padding: 0.175rem .75rem !important;
+  font-size: 15px;
+}
+
+.form-control::placeholder {
+  color: #a5d6f7;
+}
+
+.form-control:focus {
+  border-color: #0056b3;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.text-danger {
+  font-size: 12px;
+  color: red;
+}
+
+button {
+  width: 100%;
+  padding: 4px;
+  font-size: 14px;
+  background-color: #1b4137;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3D8080;
+  color: #ffffff;
+}
+
+.custom-list {
+  list-style-type: none;
+}
+
+.custom-list li {
+  display: flex;
+}
+
+.custom-list li::before {
+  content: "\2022";
+  color: #97ddff;
+  font-size: 1.9em;
+  margin-right: 10px;
+}
+
+.address {
+  display: flex;
+  gap: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: #ffff;
+  font-weight: 100;
+  font-size: 1.5rem;
+}
+
+a:hover {
+  color: #333333;
+  /* font-weight: 500; */
+}
+
+p {
+  margin-top: 2px;
+}
+
+.contact {
+  padding: 0 4rem 0 6rem
+}

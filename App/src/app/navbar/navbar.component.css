@@ -1,0 +1,101 @@
+.menu-title {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
+
+.menu-title a {
+  -webkit-transition: -webkit-transform .6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform .6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform .6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform .6s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform .6s cubic-bezier(0.19, 1, 0.22, 1)
+}
+
+
+
+.navbar>.container-fluid {
+  padding: 0px 8rem;
+  background: white;
+  border-radius: 22px;
+  margin: auto 69px;
+  padding: 4px;
+}
+
+@media (min-width: 1020px) {
+  .nav-side-pd {
+    padding: 0px 2rem;
+  }
+}
+
+.menu-title a:hover {
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02)
+}
+
+.menu-title {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 52px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+
+.nav-item a {
+  font-weight: 500;
+}
+
+@media(max-width: 900px) {
+  .menu-title {
+    position: relative;
+    bottom: auto;
+    left: 0;
+    -webkit-transform: none;
+    transform: none;
+    height: 16px
+  }
+}
+
+.menu-title a {
+  display: block;
+  text-decoration: none;
+}
+
+.menu-heading {
+  font-size: 48px;
+  color: #7ec8bb;
+  font-weight: lighter;
+}
+
+nav {
+  background-color: white;
+}
+
+.nav-left {
+  margin-left: 5rem;
+  gap: 2rem;
+}
+
+.nav-right {
+  gap: 2rem;
+  margin-right: 5rem;
+}
+
+/* Optional: Remove effects for smaller screens */
+@media (max-width: 991px) {
+  .nav-left {
+    margin-left: 0;
+    gap: 0;
+  }
+
+  .nav-right {
+    margin-right: 0;
+    gap: 0;
+  }
+}

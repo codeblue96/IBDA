@@ -1,0 +1,59 @@
+.gradient {
+  background: linear-gradient(to bottom, #f2e89d 20%, #ffffff 50%, #008080 80%);
+  height: 100%;
+}
+
+.heading {
+  font-size: 3rem;
+  position: absolute;
+  top: 8rem;
+  line-height: 1.2;
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 86vw;
+  margin-top: calc(8rem + 4rem);
+}
+
+.service {
+  border-radius: 45px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  height: 18rem;
+}
+
+.service-label {
+  border-radius: 45px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.8px);
+  -webkit-backdrop-filter: blur(2.8px);
+  font-size: x-large;
+  background: rgba(255, 255, 255, 0.66);
+  margin: 0;
+  padding: 0;
+}
+
+.iot {
+  background-image: url('/assets/imgs/IOT.jpg');
+}
+
+.ed-tech {
+  background-image: url('/assets/imgs/ed-tech.jpg');
+}
+
+.web {
+  background-image: url('/assets/imgs/web.jpg');
+}
+
+.ai-ml {
+  background-image: url('/assets/imgs/AI.jpg');
+}
+a{
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
