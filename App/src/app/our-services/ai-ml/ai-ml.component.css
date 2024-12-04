@@ -1,28 +1,28 @@
 .industry-hero-section {
-  background-color: brown;
+  ;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
   max-width: 92%;
-  padding: 30px;
+  height: 70vh;
+  padding: 3.5rem 0;
   margin: 10px auto;
+}
+
+.page-title {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(2.8px);
+  backdrop-filter: blur(2.8px);
+  font-size: 2.2rem;
+  background: rgba(255, 255, 255, 0.66);
+  margin: 0;
+  padding: 6rem 0;
 }
 
 .bg-img {
   background-image: url('/assets/imgs/AI.jpg');
-}
-
-.page-title {
-  border-radius: 45px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2.8px);
-  font-size: x-large;
-  background: rgba(255, 255, 255, 0.66);
-  margin: 0;
-  padding: 3rem 0;
-
 }
 
 /* Gradient section css */

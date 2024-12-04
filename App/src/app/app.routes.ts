@@ -8,6 +8,8 @@ import { AiMlComponent } from './our-services/ai-ml/ai-ml.component';
 import { WebDevComponent } from './our-services/web-dev/web-dev.component';
 import { EdTechComponent } from './our-services/ed-tech/ed-tech.component';
 import { EmbeddedComponent } from './our-services/embedded/embedded.component';
+import { BlogReadingComponent } from './blog-reading/blog-reading.component';
+import { BlogComponent } from './blog/blog.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Home' },
@@ -19,4 +21,6 @@ export const routes: Routes = [
   { path: 'web-dev', component: WebDevComponent, title: 'Web-Development' },
   { path: 'ed-tech', component: EdTechComponent, title: 'Ed-Tech' },
   { path: 'embedded', component: EmbeddedComponent, title: 'Embedded' },
+  { path: 'blog-reading', component: BlogReadingComponent, title: 'Blog-reading' },
+  { path: 'blogs', component: BlogComponent, title: 'Blogs' },
 ];
