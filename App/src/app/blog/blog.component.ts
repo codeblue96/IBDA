@@ -1,5 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import $ from 'jquery';  // Correct way to import jQuery
+
 
 @Component({
   selector: 'app-blog',
@@ -11,6 +13,10 @@ import { RouterLink } from '@angular/router';
 export class BlogComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.setupCarousel('carouselExampleCaptions2');
+    // jQuery code to toggle class on button click
+    // $('.search-button').click(function () {
+    //   $(this).parent().toggleClass('open');
+    // });
   }
   setupCarousel(carouselId: string): void {
     const carousel = document.getElementById(carouselId);

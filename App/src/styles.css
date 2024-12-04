@@ -27,3 +27,9 @@
   color: #00000063;
   font-weight: 300;
 }
+
+.blog-info {
+  display: flex;
+  color: #a3a3a3;
+  gap: 2rem;
+}

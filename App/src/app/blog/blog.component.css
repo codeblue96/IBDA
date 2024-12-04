@@ -48,12 +48,6 @@ img {
   border-bottom-right-radius: 60px;
 }
 
-.blog-info {
-  display: flex;
-  color: #a3a3a3;
-  gap: 2rem;
-}
-
 .blog-text {
   font-size: 0.9rem;
 }
@@ -104,7 +98,7 @@ body {
 }
 
 /* When the search element has the 'open' class */
-.search.open {
+/* .search.open {
   width: 420px;
 }
 
@@ -148,4 +142,4 @@ body {
   display: block;
   position: relative;
   margin-left: 5px;
-  transition: all}
+  transition: all} */
