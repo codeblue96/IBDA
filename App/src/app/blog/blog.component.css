@@ -96,6 +96,9 @@ body {
   background-color: #00FEDE;
   transition: all .5s ease;
 }
+.blog-time{
+  display: none;
+}
 
 /* When the search element has the 'open' class */
 /* .search.open {
@@ -143,3 +146,32 @@ body {
   position: relative;
   margin-left: 5px;
   transition: all} */
+
+.page-link {
+  color: #69caba;
+}
+
+@media (max-width: 425px) {
+  .cards-section {
+    padding: 0 1rem;
+  }
+
+  .img-fluid {
+    height: 8rem !important;
+    width: 7rem !important;
+    border-radius: 15px;
+  }
+
+  .blog-text, .blog-date, .blog-topic, .vertical-line {
+    display: none;
+  }
+
+  .card-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .blog-time{
+    display: block;
+  }
+}
