@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: center;
   max-width: 92%;
-  margin: 10px auto;
+  margin: 0 auto;
   border-radius: 60px;
   z-index: 1000;
   padding: 30px;
@@ -97,4 +97,25 @@ p {
 
 .contact {
   padding: 0 4rem 0 6rem
+}
+
+@media (max-width: 425px) {
+  .contact {
+    padding: 0;
+    margin-bottom: 3rem;
+  }
+
+  .custom-list {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .address {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+
+  .custom-list {
+    padding: 0;
+  }
 }

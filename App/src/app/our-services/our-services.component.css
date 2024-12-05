@@ -52,8 +52,19 @@
 .ai-ml {
   background-image: url('/assets/imgs/AI.jpg');
 }
-a{
+
+a {
   text-decoration: none;
   cursor: pointer;
   color: black;
+}
+
+@media (max-width: 425px) {
+  .service-label {
+    backdrop-filter: blur(0.8px);
+  }
+
+  .service-label p {
+    margin-top: 5rem;
+  }
 }
