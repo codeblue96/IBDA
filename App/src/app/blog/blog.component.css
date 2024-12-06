@@ -29,13 +29,38 @@
 }
 
 .blog-card {
-  max-width: 100%;
   position: relative;
-  border: 3px solid transparent;
-  background-clip: padding-box;
-  border-image: linear-gradient(to right, #F2E89D, #9BE0C6, #F2E89D) 1;
-  text-decoration: none;
-  cursor: pointer;
+  display: inline-block;
+  /* Adjust as needed for your use case */
+  border-radius: 10px;
+  /* Border radius for the gradient */
+  border: none;
+  background: transparent;
+  /* Ensure no background color */
+  z-index: 1;
+}
+
+.blog-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 45px;
+  /* Same radius as the container */
+  padding: 3px;
+  /* Width of the gradient border */
+  background: linear-gradient(to right, #F2E89D, #9BE0C6, #F2E89D);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  /* Ensure only border area is visible */
+  mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  /* Place behind the content */
 }
 
 .cards-section {
@@ -96,7 +121,8 @@ body {
   background-color: #00FEDE;
   transition: all .5s ease;
 }
-.blog-time{
+
+.blog-time {
   display: none;
 }
 
@@ -171,7 +197,8 @@ body {
     display: flex;
     flex-direction: column-reverse;
   }
-  .blog-time{
+
+  .blog-time {
     display: block;
   }
 }

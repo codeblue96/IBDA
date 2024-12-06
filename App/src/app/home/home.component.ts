@@ -1,14 +1,15 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NgFor } from '@angular/common';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor],
+  imports: [CarouselModule, NgFor],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     if (window.scrollY > 100) {
@@ -25,69 +26,87 @@ export class HomeComponent implements AfterViewInit {
   currentSlideIndex: number = 0; // Track the current slide index
   progressBar: HTMLElement | null = null;
 
-  ngAfterViewInit(): void {
-    // For Carousel 1
-    this.setupCarouselProgress(
-      'carouselExampleCaptions1',
-      'carouselProgressBar1'
-    );
-    // For Carousel 2
-    this.setupCarouselProgress(
-      'carouselExampleCaptions2',
-      'carouselProgressBar2'
-    );
-  }
+  slidesStore = [
+    {
+      id: '1',
+      src: '/assets/imgs/test-1.jpg',
+      alt: 'Placeholder Image 1',
+      title: 'Beautiful Landscape',
+    },
+    {
+      id: '2',
+      src: '/assets/imgs/test-1.jpg',
+      alt: 'Placeholder Image 2',
+      title: 'City at Night',
+    },
+    {
+      id: '3',
+      src: '/assets/imgs/test-1.jpg',
+      alt: 'Placeholder Image 3',
+      title: 'Mountain View',
+    },
+    {
+      id: '4',
+      src: '/assets/imgs/test-1.jpg',
+      alt: 'Placeholder Image 4',
+      title: 'Ocean Horizon',
+    },
+  ];
 
-  // Function to handle each carousel's progress
-  setupCarouselProgress(carouselId: string, progressBarId: string): void {
-    const carousel = document.getElementById(carouselId);
-    const progressBar = document.getElementById(progressBarId);
-    if (carousel && progressBar) {
-      const slides = carousel.querySelectorAll('.carousel-item');
-      this.totalSlides = slides.length; // Count slides
-
-      // Listen to the Bootstrap carousel's "next" and "prev" button clicks
-      const nextButton = carousel.querySelector('.carousel-control-next');
-      const prevButton = carousel.querySelector('.carousel-control-prev');
-
-      // Handle the next button click
-      if (nextButton) {
-        nextButton.addEventListener('click', () => {
-          this.updateProgressBar(carousel, slides, progressBar, 'next');
-        });
-      }
-
-      // Handle the previous button click
-      if (prevButton) {
-        prevButton.addEventListener('click', () => {
-          this.updateProgressBar(carousel, slides, progressBar, 'prev');
-        });
-      }
-
-      // Initialize the progress bar on load
-      this.updateProgressBar(carousel, slides, progressBar, 'init');
-    }
-  }
-
-  // Function to update progress for the carousel
-  updateProgressBar(
-    carousel: HTMLElement,
-    slides: NodeListOf<Element>,
-    progressBar: HTMLElement,
-    action: 'next' | 'prev' | 'init'
-  ): void {
-    const activeSlide = carousel.querySelector('.carousel-item.active'); // Active slide
-    let activeIndex = Array.from(slides).indexOf(activeSlide!); // Index of the active slide
-
-    // Handle "next" and "prev" actions
-    if (action === 'next') {
-      activeIndex = (activeIndex + 1) % this.totalSlides; // Move to the next slide
-    } else if (action === 'prev') {
-      activeIndex = (activeIndex - 1 + this.totalSlides) % this.totalSlides; // Move to the previous slide
-    }
-
-    // Update progress bar
-    const progressPercentage = ((activeIndex + 1) / this.totalSlides) * 100;
-    progressBar.style.width = `${progressPercentage}%`;
-  }
+  customOptions1: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    margin: 100,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    navText: ['<', '>'],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 3,
+      },
+    },
+    nav: true,
+  };
+  customOptions2: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    margin: 100,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    navText: ['<', '>'],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 3,
+      },
+    },
+    nav: true,
+  };
 }

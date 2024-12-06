@@ -11,7 +11,28 @@
   transition: transform .6s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform .6s cubic-bezier(0.19, 1, 0.22, 1)
 }
 
+.link a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: black;
+}
 
+.footer-modal {
+  margin: 3rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.header-modal button {
+  float: right;
+  padding: 2rem 2rem 0 0;
+}
+
+.gradient {
+  background: linear-gradient(to bottom, #9BE0C6, #58B6A8, #F2E89D);
+
+}
 
 .navbar>.container-fluid {
   padding: 0px 8rem;
@@ -72,6 +93,7 @@
   color: #7ec8bb;
   font-weight: lighter;
 }
+
 .nav-left {
   margin-left: 5rem;
   gap: 2rem;
