@@ -68,9 +68,9 @@
 }
 
 img {
-  border-top-left-radius: 60px;
-  border-top-right-radius: 60px;
-  border-bottom-right-radius: 60px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px
 }
 
 .blog-text {
