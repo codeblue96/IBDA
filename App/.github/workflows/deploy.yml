@@ -25,7 +25,7 @@ jobs:
         run: npm run build -- --configuration=production
 
       - name: Deploy to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@4.5.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           server: ftp://178.16.136.6
           username: u310849676.ibda.dev
