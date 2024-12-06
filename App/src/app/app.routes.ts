@@ -12,7 +12,7 @@ import { BlogReadingComponent } from './blog-reading/blog-reading.component';
 import { BlogComponent } from './blog/blog.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent, title: 'Home' },
+  { path: '', component: HomeComponent, title: 'Home' },
   { path: 'contact', component: ContactComponent, title: 'Contact' },
   { path: 'work', component: WorkComponent, title: 'Work' },
   { path: 'services', component: OurServicesComponent, title: 'Services' },
