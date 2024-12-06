@@ -1,0 +1,33 @@
+name: Deploy Angular to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular project
+        run: npm run build -- --configuration=production
+
+      - name: Deploy to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@4.5.0
+        with:
+          server: ftp://178.16.136.6
+          username: u310849676.ibda.dev
+          password:  Shabban1!
+          local-dir: dist/app/browser
