@@ -10,6 +10,11 @@ import { EdTechComponent } from './our-services/ed-tech/ed-tech.component';
 import { EmbeddedComponent } from './our-services/embedded/embedded.component';
 import { BlogReadingComponent } from './blog-reading/blog-reading.component';
 import { BlogComponent } from './blog/blog.component';
+import { NewsComponent } from './news/news.component';
+import { CareersComponent } from './careers/careers.component';
+import { IndustriesComponent } from './industries/industries.component';
+import { CommunityComponent } from './community/community.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Home' },
@@ -21,6 +26,16 @@ export const routes: Routes = [
   { path: 'web-dev', component: WebDevComponent, title: 'Web-Development' },
   { path: 'ed-tech', component: EdTechComponent, title: 'Ed-Tech' },
   { path: 'embedded', component: EmbeddedComponent, title: 'Embedded' },
-  { path: 'blog-reading', component: BlogReadingComponent, title: 'Blog-reading' },
+  {
+    path: 'blog-reading',
+    component: BlogReadingComponent,
+    title: 'Blog-reading',
+  },
   { path: 'blogs', component: BlogComponent, title: 'Blogs' },
+  { path: 'news', component: NewsComponent, title: 'News' },
+  { path: 'careers', component: CareersComponent, title: 'Careers' },
+  { path: 'industries', component: IndustriesComponent, title: 'Industries' },
+  { path: 'community', component: CommunityComponent, title: 'Community' },
+  { path: 'portfolio', component: PortfolioComponent, title: 'Portfolio' },
+
 ];

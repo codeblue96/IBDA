@@ -1,0 +1,42 @@
+.bg-img {
+  background-image: url('/assets/imgs/portfolio-bg.jpeg');
+}
+
+img {
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px
+}
+
+.project-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.project-card {
+  background-color: #303030;
+  max-width: 92%;
+  margin: 0 auto;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
+  overflow: hidden;
+}
+
+.vertical-line {
+  width: 1px;
+  background-color: #a3a3a3;
+  margin: 0 1rem;
+
+}
+
+button {
+  background: none;
+  border: none;
+  float: right;
+}
+
+.page-link {
+  color: #69caba;
+}

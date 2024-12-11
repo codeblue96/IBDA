@@ -9,8 +9,9 @@
       </div>
     </a>
     <!-- Hamburger menu on the right for mobile -->
-    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      routerLink="/menu">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Collapsible content (logo and nav links) -->
@@ -57,17 +58,17 @@
           <div class="row g-4 text-center">
             <div class="col-md-4 col-sm-6 col-12 mb-3">
               <div class="link">
-                <a data-bs-dismiss="modal" routerLink="/home">Home</a>
+                <a data-bs-dismiss="modal" routerLink="/">Home</a>
               </div>
             </div>
             <div class="col-md-4 col-sm-6 col-12 mb-3">
               <div class="link">
-                <a data-bs-dismiss="modal" routerLink="#">News</a>
+                <a data-bs-dismiss="modal" routerLink="/news">News</a>
               </div>
             </div>
             <div class="col-md-4 col-sm-6 col-12 mb-3">
               <div class="link">
-                <a data-bs-dismiss="modal" routerLink="#">Careers</a>
+                <a data-bs-dismiss="modal" routerLink="/careers">Careers</a>
               </div>
             </div>
             <div class="col-md-4 col-sm-6 col-12 mb-3">
@@ -87,12 +88,12 @@
             </div>
             <div class="col-md-4 col-sm-6 col-12 mb-3">
               <div class="link">
-                <a data-bs-dismiss="modal" routerLink="#">Industries</a>
+                <a data-bs-dismiss="modal" routerLink="/industries">Industries</a>
               </div>
             </div>
             <div class="col-md-4 col-sm-6 col-12 mb-3">
               <div class="link">
-                <a data-bs-dismiss="modal" routerLink="#">Community</a>
+                <a data-bs-dismiss="modal" routerLink="/portfolio">Portfolio</a>
               </div>
             </div>
             <div class="col-md-4 col-sm-6 col-12 mb-3">

@@ -33,3 +33,48 @@
   color: #a3a3a3;
   gap: 2rem;
 }
+
+.mini-hero-sec {
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  max-width: 92%;
+  height: 70vh;
+  padding: 3.5rem 0;
+  margin: 10px auto;
+
+}
+
+.page-title {
+  font-size: 2.2rem;
+  margin: 0;
+  padding: 6rem 0;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gradient-section {
+  background: linear-gradient(to top, teal, rgb(172, 211, 236));
+  color: white;
+  min-height: 300px;
+  max-width: 92%;
+  margin: -10px auto;
+  border-radius: 60px;
+  padding: 0 100px;
+  margin-top: 1rem;
+}
+
+h3 {
+  float: left;
+  font-weight: 100;
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+  .gradient-section {
+    padding: 0 3rem;
+  }
+}

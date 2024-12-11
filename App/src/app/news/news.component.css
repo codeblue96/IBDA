@@ -1,0 +1,83 @@
+ body, html {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+   font-family: 'Arial', sans-serif;
+ }
+
+ .main-area {
+   background: url('/assets/imgs/coming-soon-bg.jpg') no-repeat center center/cover;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   color: white;
+ }
+
+ .main-area .title {
+   font-size: 3rem;
+   font-weight: bold;
+   color: #4f52e2;
+   margin-bottom: 10px;
+ }
+
+ .main-area .desc {
+   font-size: 1.2rem;
+   margin-bottom: 30px;
+   color: rgba(0, 0, 0, 0.8);
+   font-family: sans-serif;
+ }
+
+ #normal-countdown {
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin: 20px 0;
+   color: #6dc2e4;
+ }
+
+ .notify-btn {
+   display: inline-block;
+   margin-top: 20px;
+   padding: 10px 25px;
+   border-radius: 30px;
+   background: #7fdcf8;
+   color: white;
+   text-transform: uppercase;
+   font-weight: bold;
+   text-decoration: none;
+   transition: all 0.3s ease-in-out;
+ }
+
+ .notify-btn:hover {
+   background: rgb(172, 211, 236);
+   color: #4f52e2;
+ }
+
+ .social-btn {
+   margin-top: 30px;
+   list-style: none;
+   padding: 0;
+ }
+
+ .social-btn .list-heading {
+   font-size: 1rem;
+   margin-bottom: 15px;
+   text-transform: uppercase;
+   color: rgba(255, 255, 255, 0.8);
+ }
+
+ .social-btn li {
+   display: inline-block;
+   margin: 0 10px;
+ }
+
+ .social-btn a {
+   font-size: 1.5rem;
+   color: white;
+   transition: color 0.3s ease-in-out;
+ }
+
+ .social-btn a:hover {
+   color: rgb(172, 211, 236);
+ }

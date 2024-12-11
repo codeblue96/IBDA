@@ -1,7 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -10,46 +11,71 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    if (window.scrollY > 100) {
-      // Check if the scroll position is greater than 100px
-      // alert('You have scrolled more than 100px!');
-    }
-  }
   logos: string[] = [
     'assets/imgs/logos/company-1.png',
     'assets/imgs/logos/company-2.png',
     'assets/imgs/logos/company-3.png',
   ];
-  totalSlides: number = 0;
-  currentSlideIndex: number = 0; // Track the current slide index
-  progressBar: HTMLElement | null = null;
 
   slidesStore = [
     {
       id: '1',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/bms.jpg',
       alt: 'Placeholder Image 1',
-      title: 'Beautiful Landscape',
+      title: 'Embedded Systems',
+      description: 'Battery Management System Software Compliance.',
     },
     {
       id: '2',
       src: '/assets/imgs/test-1.jpg',
       alt: 'Placeholder Image 2',
       title: 'City at Night',
+      description: 'This is the description for Story 3.',
     },
     {
       id: '3',
       src: '/assets/imgs/test-1.jpg',
       alt: 'Placeholder Image 3',
       title: 'Mountain View',
+      description: 'This is the description for Story 3.',
     },
     {
       id: '4',
       src: '/assets/imgs/test-1.jpg',
       alt: 'Placeholder Image 4',
       title: 'Ocean Horizon',
+      description: 'This is the description for Story 3.',
+    },
+  ];
+
+  slidesStore2 = [
+    {
+      id: '1',
+      src: '/assets/imgs/consumer-elec.jpg',
+      alt: 'Placeholder Image 1',
+      title: 'Embedded Systems',
+      description: 'Battery Management System Software Compliance.',
+    },
+    {
+      id: '2',
+      src: '/assets/imgs/img-recog.jpg',
+      alt: 'Placeholder Image 2',
+      title: 'City at Night',
+      description: 'This is the description for Story 3.',
+    },
+    {
+      id: '3',
+      src: '/assets/imgs/micro-cont.jpg',
+      alt: 'Placeholder Image 3',
+      title: 'Mountain View',
+      description: 'This is the description for Story 3.',
+    },
+    {
+      id: '4',
+      src: '/assets/imgs/test-1.jpg',
+      alt: 'Placeholder Image 4',
+      title: 'Ocean Horizon',
+      description: 'This is the description for Story 3.',
     },
   ];
 
@@ -60,10 +86,10 @@ export class HomeComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 100,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
+    margin: 85,
+    // autoplay: true,
+    // autoplayTimeout: 5000,
+    // autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
       0: {
@@ -76,7 +102,7 @@ export class HomeComponent {
         items: 3,
       },
       940: {
-        items: 3,
+        items: 4,
       },
     },
     nav: true,
@@ -88,10 +114,10 @@ export class HomeComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 100,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
+    margin: 85,
+    // autoplay: true,
+    // autoplayTimeout: 5000,
+    // autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
       0: {
@@ -104,7 +130,7 @@ export class HomeComponent {
         items: 3,
       },
       940: {
-        items: 3,
+        items: 4,
       },
     },
     nav: true,
