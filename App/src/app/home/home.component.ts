@@ -20,14 +20,14 @@ export class HomeComponent {
   slidesStore = [
     {
       id: '1',
-      src: '/assets/imgs/bms.png',
+      src: '/assets/imgs/bms.jpg',
       alt: 'Placeholder Image 1',
       title: 'Embedded Systems',
       description: 'Battery Management System Software Compliance',
     },
     {
       id: '2',
-      src: '/assets/imgs/smart-farming.png',
+      src: '/assets/imgs/smart-farming.jpg',
       alt: 'Placeholder Image 2',
       title: 'Smart Farming',
       description:
@@ -35,14 +35,14 @@ export class HomeComponent {
     },
     {
       id: '3',
-      src: '/assets/imgs/bms-2.png',
+      src: '/assets/imgs/bms-2.jpg',
       alt: 'Placeholder Image 3',
       title: 'Embedded Systems',
       description: 'Battery Management Software for Electric Vehicles',
     },
     {
       id: '4',
-      src: '/assets/imgs/farma-supply.png',
+      src: '/assets/imgs/farma-supply.jpg',
       alt: 'Placeholder Image 4',
       title: 'Web App',
       description: 'Pharma Supply Chain and Sales Optimization Web Application',
@@ -52,21 +52,21 @@ export class HomeComponent {
   slidesStore2 = [
     {
       id: '1',
-      src: '/assets/imgs/embeded-sys.png',
+      src: '/assets/imgs/embeded-sys.jpg',
       alt: 'Placeholder Image 1',
       title: 'Embedded Systems',
       description: 'Smart Consumer Electronics',
     },
     {
       id: '2',
-      src: '/assets/imgs/ed-tech-gamification.png',
+      src: '/assets/imgs/ed-tech-gamification.jpg',
       alt: 'Placeholder Image 2',
       title: 'Ed-tech',
       description: 'Custom LMS for Financial Literacy Education in Schools',
     },
     {
       id: '3',
-      src: '/assets/imgs/ai-farm.png',
+      src: '/assets/imgs/ai-farm.jpg',
       alt: 'Placeholder Image 3',
       title: 'AI/Mchine Learning',
       description: 'AI-Powered Farm Animal Surveillance System',
