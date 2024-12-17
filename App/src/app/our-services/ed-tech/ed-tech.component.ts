@@ -14,27 +14,55 @@ export class EdTechComponent {
   slidesStore = [
     {
       id: '1',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/ed-tech-sec.png',
       alt: 'Placeholder Image 1',
-      title: 'Beautiful Landscape',
+      title: 'Education Sector',
+      description: '',
     },
     {
       id: '2',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/Corporate-learning.jpg',
       alt: 'Placeholder Image 2',
-      title: 'City at Night',
+      title: 'Corporate Training',
+      description: '',
     },
     {
       id: '3',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/govt.png',
       alt: 'Placeholder Image 3',
-      title: 'Mountain View',
+      title: 'Government & Public Sector',
+      description: '',
     },
     {
       id: '4',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/NGO.jpg',
       alt: 'Placeholder Image 4',
-      title: 'Ocean Horizon',
+      title: 'NGOs & Nonprofits',
+      description: '',
+    },
+  ];
+
+  slidesStore2 = [
+    {
+      id: '1',
+      src: '/assets/imgs/LMS.jpg',
+      alt: 'Placeholder Image 1',
+      title: 'LMS Development & Customization',
+      description: '',
+    },
+    {
+      id: '2',
+      src: '/assets/imgs/gamified.jpg',
+      alt: 'Placeholder Image 2',
+      title: 'Gamified Learning Solutions',
+      description: '',
+    },
+    {
+      id: '3',
+      src: '/assets/imgs/mlearning3.jpg',
+      alt: 'Placeholder Image 4',
+      title: 'Mobile Learning (mLearning)',
+      description: '',
     },
   ];
 
@@ -45,7 +73,7 @@ export class EdTechComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 100,
+    margin: 45,
     autoplay: true,
     autoplayTimeout: 5000,
     autoplayHoverPause: true,
@@ -61,7 +89,7 @@ export class EdTechComponent {
         items: 3,
       },
       940: {
-        items: 4,
+        items: 3,
       },
     },
     nav: true,
@@ -73,7 +101,7 @@ export class EdTechComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 100,
+    margin: 45,
     autoplay: true,
     autoplayTimeout: 5000,
     autoplayHoverPause: true,
@@ -89,7 +117,7 @@ export class EdTechComponent {
         items: 3,
       },
       940: {
-        items: 4,
+        items: 3,
       },
     },
     nav: true,

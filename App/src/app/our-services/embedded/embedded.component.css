@@ -1,5 +1,8 @@
-
 .bg-img {
-  background-image: url('/assets/imgs/IOT.jpg');
+  background-image: url('/assets/imgs/hero-iot.jpeg');
 }
 
+
+p {
+  font-size: 1rem;
+}

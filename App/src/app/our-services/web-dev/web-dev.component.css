@@ -1,3 +1,7 @@
 .bg-img {
   background-image: url('/assets/imgs/web.jpg');
 }
+
+p {
+  font-size: 1rem;
+}

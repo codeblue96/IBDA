@@ -20,62 +20,63 @@ export class HomeComponent {
   slidesStore = [
     {
       id: '1',
-      src: '/assets/imgs/bms.jpg',
+      src: '/assets/imgs/bms.png',
       alt: 'Placeholder Image 1',
       title: 'Embedded Systems',
-      description: 'Battery Management System Software Compliance.',
+      description: 'Battery Management System Software Compliance',
     },
     {
       id: '2',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/smart-farming.png',
       alt: 'Placeholder Image 2',
-      title: 'City at Night',
-      description: 'This is the description for Story 3.',
+      title: 'Smart Farming',
+      description:
+        'Leveraging Sensor Fusion and IoT for Agricultural Innovation',
     },
     {
       id: '3',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/bms-2.png',
       alt: 'Placeholder Image 3',
-      title: 'Mountain View',
-      description: 'This is the description for Story 3.',
+      title: 'Embedded Systems',
+      description: 'Battery Management Software for Electric Vehicles',
     },
     {
       id: '4',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/farma-supply.png',
       alt: 'Placeholder Image 4',
-      title: 'Ocean Horizon',
-      description: 'This is the description for Story 3.',
+      title: 'Web App',
+      description: 'Pharma Supply Chain and Sales Optimization Web Application',
     },
   ];
 
   slidesStore2 = [
     {
       id: '1',
-      src: '/assets/imgs/consumer-elec.jpg',
+      src: '/assets/imgs/embeded-sys.png',
       alt: 'Placeholder Image 1',
       title: 'Embedded Systems',
-      description: 'Battery Management System Software Compliance.',
+      description: 'Smart Consumer Electronics',
     },
     {
       id: '2',
-      src: '/assets/imgs/img-recog.jpg',
+      src: '/assets/imgs/ed-tech-gamification.png',
       alt: 'Placeholder Image 2',
-      title: 'City at Night',
-      description: 'This is the description for Story 3.',
+      title: 'Ed-tech',
+      description: 'Custom LMS for Financial Literacy Education in Schools',
     },
     {
       id: '3',
-      src: '/assets/imgs/micro-cont.jpg',
+      src: '/assets/imgs/ai-farm.png',
       alt: 'Placeholder Image 3',
-      title: 'Mountain View',
-      description: 'This is the description for Story 3.',
+      title: 'AI/Mchine Learning',
+      description: 'AI-Powered Farm Animal Surveillance System',
     },
     {
       id: '4',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/web-design.jpg',
       alt: 'Placeholder Image 4',
-      title: 'Ocean Horizon',
-      description: 'This is the description for Story 3.',
+      title: 'Web',
+      description: 'Custom Web Design Solutions',
     },
   ];
 
@@ -86,10 +87,10 @@ export class HomeComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 85,
-    // autoplay: true,
-    // autoplayTimeout: 5000,
-    // autoplayHoverPause: true,
+    margin: 45,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
       0: {
@@ -102,7 +103,7 @@ export class HomeComponent {
         items: 3,
       },
       940: {
-        items: 4,
+        items: 3,
       },
     },
     nav: true,
@@ -114,10 +115,10 @@ export class HomeComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 85,
-    // autoplay: true,
-    // autoplayTimeout: 5000,
-    // autoplayHoverPause: true,
+    margin: 45,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
       0: {
@@ -130,7 +131,7 @@ export class HomeComponent {
         items: 3,
       },
       940: {
-        items: 4,
+        items: 3,
       },
     },
     nav: true,

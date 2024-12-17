@@ -34,6 +34,11 @@
 
 }
 
+img {
+  width: 7rem;
+  margin-top: -10px;
+}
+
 .navbar>.container-fluid {
   background: white;
   border-radius: 22px;

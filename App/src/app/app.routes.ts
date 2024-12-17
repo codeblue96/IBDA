@@ -37,5 +37,5 @@ export const routes: Routes = [
   { path: 'industries', component: IndustriesComponent, title: 'Industries' },
   { path: 'community', component: CommunityComponent, title: 'Community' },
   { path: 'portfolio', component: PortfolioComponent, title: 'Portfolio' },
-
+  { path: 'blog-reading/:id', component: BlogReadingComponent },
 ];

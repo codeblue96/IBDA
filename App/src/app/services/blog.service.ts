@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { SafeHtml } from '@angular/platform-browser';
 
 // Interface for Blog data
 export interface Blog {
@@ -11,6 +12,7 @@ export interface Blog {
   date: string; // Date when the blog was published
   author: string; // Author of the blog
   topic: string; // The topic/category of the blog
+  sanitizedContent?: SafeHtml;
 }
 @Injectable({
   providedIn: 'root',
@@ -42,11 +44,13 @@ export class BlogService {
               blog.img = imageUrl; // Update img with the fetched URL
             });
           }
-
           return blog;
         })
       )
     );
+  }
+  getBlogById(id: string): Observable<Blog> {
+    return this.http.get<Blog>(`${this.apiUrl}/${id}`);
   }
   // API call to fetch the image URL by featured_media ID
   private fetchImageUrl(mediaId: number): Observable<string> {

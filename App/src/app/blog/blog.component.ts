@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Blog, BlogService } from '../services/blog.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog',
@@ -11,28 +12,35 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
   styleUrls: ['./blog.component.css'],
 })
 export class BlogComponent implements AfterViewInit, OnInit {
+  // SafeHtml property for the selected blog content
+  blogContent: SafeHtml | null = null;
+
   // Array to hold the blog data fetched from the API
   blogs: Blog[] = [];
+
   // Boolean to track the loading state of the blogs
   isLoading = true;
 
-  // Injecting the BlogService to fetch blog data
-  constructor(private blogService: BlogService) {}
+  // Injecting the BlogService and DomSanitizer
+  constructor(
+    private blogService: BlogService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   // Lifecycle hook that runs once when the component is initialized
   ngOnInit(): void {
-    // Fetch blogs using the BlogService
     this.blogService.getBlogs().subscribe(
       (blogs) => {
-        // Assign the fetched blogs to the blogs array
-        this.blogs = blogs;
-        // Set loading state to false after the data is loaded
+        this.blogs = blogs.map((blog) => ({
+          ...blog,
+          sanitizedContent: this.sanitizer.bypassSecurityTrustHtml(
+            blog.content
+          ), // Sanitize HTML
+        }));
         this.isLoading = false;
       },
       (error) => {
-        // Log any error that occurs during the API call
         console.error('Error fetching blogs', error);
-        // Ensure the loading state is updated even if an error occurs
         this.isLoading = false;
       }
     );
@@ -67,5 +75,15 @@ export class BlogComponent implements AfterViewInit, OnInit {
         });
       }
     }
+  }
+
+  // Sanitize HTML content to render safely
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
+
+  // Display a specific blog's content
+  showBlogContent(blog: Blog): void {
+    this.blogContent = this.sanitizeHtml(blog.content);
   }
 }

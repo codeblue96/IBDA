@@ -1,3 +1,7 @@
 .bg-img {
-  background-image: url('/assets/imgs/ed-tech.jpg');
+  background-image: url('/assets/imgs/services-ed-tech.jpeg');
+}
+
+p {
+  font-size: 1rem;
 }

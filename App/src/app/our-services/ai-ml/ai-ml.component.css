@@ -1,3 +1,7 @@
 .bg-img {
   background-image: url('/assets/imgs/AI.jpg');
 }
+
+p {
+  font-size: 1rem;
+}
