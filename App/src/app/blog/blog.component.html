@@ -1,108 +1,35 @@
 <div class="blog-hero-section">
   <div id="carouselExampleCaptions2" class="carousel carousel-dark slide" data-bs-ride="false">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <!-- <div class="search">
-          <input type="search" class="search-box" />
-          <span class="search-button">
-            <span class="search-icon"></span>
-          </span>
-        </div> -->
+      <div *ngFor="let blog of latestBlogs; let i = index" [class.active]="i === 0" class="carousel-item">
         <div class="row d-flex flex-column flex-md-row">
           <div class="col-12 col-md-5 order-0 order-md-0">
             <div class="bg-img">
-              <img src="/assets/imgs/blog-hero.jpg" alt="Blog Hero" class="img-fluid">
+              <img [src]="blog.img || '/assets/imgs/blog-hero.jpg'" [alt]="blog.title" class="img-fluid" />
             </div>
           </div>
           <div class="col-12 col-md-7 p-4 order-1 order-md-1">
             <div class="blog-info d-flex">
-              <div class="blog-date">date</div>
+              <div class="blog-date">{{ blog.date | date: 'mediumDate' }}</div>
               <div class="vertical-line"></div>
-              <div class="author-name">Author</div>
+              <div class="author-name">{{ blog.author }}</div>
               <div class="vertical-line"></div>
-              <div class="blog-topic">Topic</div>
+              <div class="blog-topic">{{ blog.topic }}</div>
             </div>
             <h3 class="blog-heading text-white fw-bold monda mt-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              {{ blog.title }}
             </h3>
-            <div class="blog-text text-white d-inline-block mt-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-              amet,
-              consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-            <button routerLink="/blog-reading">Read More</button>
+            <p class="blog-text text-white d-inline-block mt-5 truncated-content" [innerHTML]="blog.sanitizedContent"></p>
+            <button [routerLink]="['/blog-reading', blog.id]">
+              Read More
+            </button>
           </div>
         </div>
-
-      </div>
-
-      <div class="carousel-item">
-        <div class="row d-flex flex-column flex-md-row">
-          <div class="col-12 col-md-5 order-0 order-md-0">
-            <div class="bg-img">
-              <img src="/assets/imgs/blog-hero.jpg" alt="Blog Hero" class="img-fluid">
-            </div>
-          </div>
-          <div class="col-12 col-md-7 p-4 order-1 order-md-1">
-            <div class="blog-info d-flex">
-              <div class="blog-date">date</div>
-              <div class="vertical-line"></div>
-              <div class="author-name">Author</div>
-              <div class="vertical-line"></div>
-              <div class="blog-topic">Topic</div>
-            </div>
-            <h3 class="blog-heading text-white fw-bold monda mt-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            </h3>
-            <div class="blog-text text-white d-inline-block mt-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-              amet,
-              consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-            <button routerLink="/blog-reading">Read More</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="carousel-item">
-        <div class="row d-flex flex-column flex-md-row">
-          <div class="col-12 col-md-5 order-0 order-md-0">
-            <div class="bg-img">
-              <img src="/assets/imgs/blog-hero.jpg" alt="Blog Hero" class="img-fluid">
-            </div>
-          </div>
-          <div class="col-12 col-md-7 p-4 order-1 order-md-1">
-            <div class="blog-info d-flex">
-              <div class="blog-date">date</div>
-              <div class="vertical-line"></div>
-              <div class="author-name">Author</div>
-              <div class="vertical-line"></div>
-              <div class="blog-topic">Topic</div>
-            </div>
-            <h3 class="blog-heading text-white fw-bold monda mt-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            </h3>
-            <div class="blog-text text-white d-inline-block mt-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-              amet,
-              consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-            <button routerLink="/blog-reading">Read More</button>
-          </div>
-        </div>
-
       </div>
     </div>
+
+
+
 
     <!-- Carousel Controls -->
     <div class="btns">
@@ -122,15 +49,12 @@
 <div *ngIf="isLoading">Loading blogs...</div>
 
 <div *ngIf="!isLoading && blogs.length > 0" class="cards-section">
-  <a  [routerLink]="['/blog-reading', blog.id]" *ngFor="let blog of blogs" class="card mt-5 blog-card text-decoration-none">
+  <a [routerLink]="['/blog-reading', blog.id]" *ngFor="let blog of blogs"
+    class="card mt-5 blog-card text-decoration-none">
     <div class="row g-0">
       <div class="col-4 col-md-4">
-        <img
-          [src]="blog.img || 'assets/default-thumbnail.jpg'"
-          alt="Blog image"
-          class="blog-img img-fluid"
-          style="height: 220px; width: 450px; object-fit: cover;"
-        />
+        <img [src]="blog.img || 'assets/default-thumbnail.jpg'" alt="Blog image" class="blog-img img-fluid"
+          style="height: 220px; width: 450px; object-fit: cover;" />
       </div>
       <div class="col-8 col-md-8">
         <div class="card-body">

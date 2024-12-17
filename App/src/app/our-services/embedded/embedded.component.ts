@@ -50,7 +50,7 @@ export class EmbeddedComponent {
   slidesStore2 = [
     {
       id: '1',
-      src: '/assets/imgs/embeded-sys.png',
+      src: '/assets/imgs/embeddeds.jpg',
       alt: 'Placeholder Image 1',
       title: 'Microcontrollers Programming',
       description: '',
@@ -64,7 +64,7 @@ export class EmbeddedComponent {
     },
     {
       id: '3',
-      src: '/assets/imgs/Embedded-linux.png',
+      src: '/assets/imgs/Embedded-linux.jpg',
       alt: 'Placeholder Image 3',
       title: 'Embedded Linux',
       description: '',
@@ -78,7 +78,7 @@ export class EmbeddedComponent {
     },
     {
       id: '5',
-      src: '/assets/imgs/ROS2.png',
+      src: '/assets/imgs/ROS2.jpg',
       alt: 'Placeholder Image 4',
       title: 'ROS',
       description: '',

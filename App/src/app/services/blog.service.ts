@@ -20,6 +20,7 @@ export interface Blog {
 export class BlogService {
   private apiUrl =
     'https://wp.ibda.dev/wp-json/wp/v2/posts?page=1&per_page=5&order=desc&status=publish&offset=3'; // API endpoint for blogs
+
   private mediaApiUrl = 'https://wp.ibda.dev/wp-json/wp/v2/media'; // API endpoint for media
   constructor(private http: HttpClient) {}
 

@@ -57,14 +57,14 @@ export class AiMlComponent {
   slidesStore2 = [
     {
       id: '1',
-      src: '/assets/imgs/agri-tech.png',
+      src: '/assets/imgs/agri-tech.jpg',
       alt: 'Placeholder Image 1',
       title: 'Agriculture Tech (AgriTech)',
       description: '',
     },
     {
       id: '2',
-      src: '/assets/imgs/green-tech.png',
+      src: '/assets/imgs/green-tech.jpg',
       alt: 'Placeholder Image 2',
       title: 'Green Energy',
       description: '',
@@ -99,7 +99,7 @@ export class AiMlComponent {
     },
     {
       id: '4',
-      src: '/assets/imgs/automotive-embedd.png',
+      src: '/assets/imgs/automotive-embedd.jpg',
       alt: 'Placeholder Image 4',
       title: 'Automotive',
       description: '',
@@ -120,7 +120,7 @@ export class AiMlComponent {
     },
     {
       id: '4',
-      src: '/assets/imgs/Logistics3.png',
+      src: '/assets/imgs/Logistics3.jpg',
       alt: 'Placeholder Image 4',
       title: 'Logistics & Transportation',
       description: '',
