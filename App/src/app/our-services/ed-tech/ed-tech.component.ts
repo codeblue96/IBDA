@@ -14,7 +14,7 @@ export class EdTechComponent {
   slidesStore = [
     {
       id: '1',
-      src: '/assets/imgs/ed-tech-sec.png',
+      src: '/assets/imgs/ed-tech-sec.jpg',
       alt: 'Placeholder Image 1',
       title: 'Education Sector',
       description: '',
