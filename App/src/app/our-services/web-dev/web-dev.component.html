@@ -1,138 +1,44 @@
-<div class="industry-hero-section bg-img">
-  <div class="page-title text-center">
+<div class="mini-hero-sec bg-img">
+  <h2 class="page-title text-center fw-bold">
     Web & Mobile<br> App <br> Development
-  </div>
+  </h2>
 </div>
 <section class="gradient-section py-5 ">
-  <div class="project-section" id="carouselSection1">
-    <h3 class="mb-4">Services</h3>
-    <div id="carouselExampleCaptions1" class="carousel carousel-dark slide" data-bs-ride="false">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="card-group">
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
+  <div class="d-flex flex-column">
+    <h3 class="mb-4 fw-medium">Services</h3>
+    <owl-carousel-o [options]="customOptions1">
+      <ng-container *ngFor="let slide of slidesStore">
+        <ng-template carouselSlide [id]="slide.id">
+          <div class="slide-container">
+            <img [src]="slide.src" [alt]="slide.alt" />
+            <div class="image-text-wrapper">
+              <div class="overlay-text">
+                <h4 class="text-white slide-title">{{ slide.title }}</h4>
+                <p class="text-white slide-desc">{{ slide.description }}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card-group">
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card-group">
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="btns">
-        <button class="carousel-control-prev btn-nav" type="button" data-bs-target="#carouselExampleCaptions1"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next btn-nav" type="button" data-bs-target="#carouselExampleCaptions1"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="carousel-progress">
-      <div class="carousel-progress-bar" id="carouselProgressBar1"></div>
-    </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </div>
 
-
-
-
-
-
-  <div class="project-section" id="carouselSection2">
-    <h3 class="mb-4">Industries</h3>
-    <div id="carouselExampleCaptions2" class="carousel carousel-dark slide" data-bs-ride="false">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="card-group">
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
+  <div class="d-flex flex-column mt-5">
+    <h3 class="mb-4 fw-medium">Industries</h3>
+    <owl-carousel-o [options]="customOptions1">
+      <ng-container *ngFor="let slide of slidesStore2">
+        <ng-template carouselSlide [id]="slide.id">
+          <div class="slide-container">
+            <img [src]="slide.src" [alt]="slide.alt" />
+            <div class="image-text-wrapper">
+              <div class="overlay-text">
+                <h4>{{ slide.title }}</h4>
+                <p>{{ slide.description }}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card-group">
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card-group">
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card">
-              <img src="/assets/imgs/test-1.jpg" class="card-img-top" alt="...">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="btns">
-        <button class="carousel-control-prev btn-nav " type="button" data-bs-target="#carouselExampleCaptions2"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next btn-nav " type="button" data-bs-target="#carouselExampleCaptions2"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-    <!-- Progress Bar -->
-    <div class="carousel-progress">
-      <div class="carousel-progress-bar" id="carouselProgressBar2"></div>
-    </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </div>
 </section>

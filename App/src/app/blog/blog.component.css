@@ -38,6 +38,8 @@
   background: transparent;
   /* Ensure no background color */
   z-index: 1;
+  width: 100%;
+  min-height: 220px;
 }
 
 .blog-card::before {
@@ -201,4 +203,23 @@ body {
   .blog-time {
     display: block;
   }
+
+  .bg-img img {
+    width: 100% !important;
+  }
+}
+
+.blog-heading {
+  display: contents;
+}
+
+.truncated-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Show only 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  /* Ensure multi-line truncation works */
 }

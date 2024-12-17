@@ -1,7 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -10,46 +11,72 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    if (window.scrollY > 100) {
-      // Check if the scroll position is greater than 100px
-      // alert('You have scrolled more than 100px!');
-    }
-  }
   logos: string[] = [
     'assets/imgs/logos/company-1.png',
     'assets/imgs/logos/company-2.png',
     'assets/imgs/logos/company-3.png',
   ];
-  totalSlides: number = 0;
-  currentSlideIndex: number = 0; // Track the current slide index
-  progressBar: HTMLElement | null = null;
 
   slidesStore = [
     {
       id: '1',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/bms.png',
       alt: 'Placeholder Image 1',
-      title: 'Beautiful Landscape',
+      title: 'Embedded Systems',
+      description: 'Battery Management System Software Compliance',
     },
     {
       id: '2',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/smart-farming.png',
       alt: 'Placeholder Image 2',
-      title: 'City at Night',
+      title: 'Smart Farming',
+      description:
+        'Leveraging Sensor Fusion and IoT for Agricultural Innovation',
     },
     {
       id: '3',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/bms-2.png',
       alt: 'Placeholder Image 3',
-      title: 'Mountain View',
+      title: 'Embedded Systems',
+      description: 'Battery Management Software for Electric Vehicles',
     },
     {
       id: '4',
-      src: '/assets/imgs/test-1.jpg',
+      src: '/assets/imgs/farma-supply.png',
       alt: 'Placeholder Image 4',
-      title: 'Ocean Horizon',
+      title: 'Web App',
+      description: 'Pharma Supply Chain and Sales Optimization Web Application',
+    },
+  ];
+
+  slidesStore2 = [
+    {
+      id: '1',
+      src: '/assets/imgs/embeded-sys.png',
+      alt: 'Placeholder Image 1',
+      title: 'Embedded Systems',
+      description: 'Smart Consumer Electronics',
+    },
+    {
+      id: '2',
+      src: '/assets/imgs/ed-tech-gamification.png',
+      alt: 'Placeholder Image 2',
+      title: 'Ed-tech',
+      description: 'Custom LMS for Financial Literacy Education in Schools',
+    },
+    {
+      id: '3',
+      src: '/assets/imgs/ai-farm.png',
+      alt: 'Placeholder Image 3',
+      title: 'AI/Mchine Learning',
+      description: 'AI-Powered Farm Animal Surveillance System',
+    },
+    {
+      id: '4',
+      src: '/assets/imgs/web-design.jpg',
+      alt: 'Placeholder Image 4',
+      title: 'Web',
+      description: 'Custom Web Design Solutions',
     },
   ];
 
@@ -60,7 +87,7 @@ export class HomeComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 100,
+    margin: 45,
     autoplay: true,
     autoplayTimeout: 5000,
     autoplayHoverPause: true,
@@ -88,7 +115,7 @@ export class HomeComponent {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    margin: 100,
+    margin: 45,
     autoplay: true,
     autoplayTimeout: 5000,
     autoplayHoverPause: true,

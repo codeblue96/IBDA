@@ -34,17 +34,31 @@
 
 }
 
+img {
+  width: 7rem;
+  margin-top: -10px;
+}
+
 .navbar>.container-fluid {
-  padding: 0px 8rem;
   background: white;
   border-radius: 22px;
-  margin: auto 69px;
+  margin: auto 13rem;
   padding: 4px;
 }
 
-@media (min-width: 1020px) {
-  .nav-side-pd {
-    padding: 0px 2rem;
+@media (max-width: 425px) {
+
+  .navbar>.container-fluid {
+    margin: auto 1rem;
+    padding: 0.3rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .menu-heading {
+    text-shadow: -1px -1px 0 rgb(255 255 255), 1px 1px 0 rgb(0 0 0 / 0%), 3px 3px 3px rgba(0, 0, 0, .25), 10px 10px 20px rgb(0 0 0 / 0%), 20px 40px 40px rgb(0 0 0 / 0%);
   }
 }
 
