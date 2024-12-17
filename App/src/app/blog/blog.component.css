@@ -216,10 +216,9 @@ body {
 .truncated-content {
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  /* Show only 3 lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal;
-  /* Ensure multi-line truncation works */
+  line-height: 1.5;
+  max-height: 4.5em;
 }

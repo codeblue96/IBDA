@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { SafeHtml } from '@angular/platform-browser';
 
-// Interface for Blog data
-export interface Blog {
+export interface LatestBlog {
   id: number;
   title: string;
   content: string;
@@ -14,22 +13,24 @@ export interface Blog {
   topic: string; // The topic/category of the blog
   sanitizedContent?: SafeHtml;
 }
+
 @Injectable({
   providedIn: 'root',
 })
-export class BlogService {
+export class LatestBlogsService {
   private apiUrl =
-    'https://wp.ibda.dev/wp-json/wp/v2/posts?page=1&per_page=5&order=desc&status=publish&offset=3'; // API endpoint for blogs
+    'https://wp.ibda.dev/wp-json/wp/v2/posts?page=1&per_page=3&order=desc&status=publish';
 
   private mediaApiUrl = 'https://wp.ibda.dev/wp-json/wp/v2/media'; // API endpoint for media
+
   constructor(private http: HttpClient) {}
 
   // Method to fetch blogs
-  getBlogs(): Observable<Blog[]> {
+  getLatestBlogs(): Observable<LatestBlog[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
       map((posts) =>
         posts.map((post) => {
-          const blog: Blog = {
+          const blog: LatestBlog = {
             id: post.id,
             title: post.title.rendered,
             content: post.content.rendered,
@@ -50,8 +51,8 @@ export class BlogService {
       )
     );
   }
-  getBlogById(id: string): Observable<Blog> {
-    return this.http.get<Blog>(`${this.apiUrl}/${id}`);
+  getBlogById(id: string): Observable<LatestBlog> {
+    return this.http.get<LatestBlog>(`${this.apiUrl}/${id}`);
   }
   // API call to fetch the image URL by featured_media ID
   private fetchImageUrl(mediaId: number): Observable<string> {

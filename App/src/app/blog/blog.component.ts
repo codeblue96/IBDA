@@ -3,6 +3,11 @@ import { RouterLink } from '@angular/router';
 import { Blog, BlogService } from '../services/blog.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import {
+  LatestBlog,
+  LatestBlogsService,
+} from '../services/latest-blogs.service';
+
 
 @Component({
   selector: 'app-blog',
@@ -14,9 +19,10 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class BlogComponent implements AfterViewInit, OnInit {
   // SafeHtml property for the selected blog content
   blogContent: SafeHtml | null = null;
-
+  latestBlogContent: SafeHtml | null = null;
   // Array to hold the blog data fetched from the API
   blogs: Blog[] = [];
+  latestBlogs: LatestBlog[] = []; // Array for latest blogs
 
   // Boolean to track the loading state of the blogs
   isLoading = true;
@@ -24,6 +30,7 @@ export class BlogComponent implements AfterViewInit, OnInit {
   // Injecting the BlogService and DomSanitizer
   constructor(
     private blogService: BlogService,
+    private latestBlogsService: LatestBlogsService,
     private sanitizer: DomSanitizer
   ) {}
 
@@ -44,12 +51,29 @@ export class BlogComponent implements AfterViewInit, OnInit {
         this.isLoading = false;
       }
     );
+    this.fetchLatestBlogs();
   }
 
   // Lifecycle hook that runs after the component's view is initialized
   ngAfterViewInit(): void {
     // Setup carousel functionality for the specified carousel ID
     this.setupCarousel('carouselExampleCaptions2');
+  }
+  fetchLatestBlogs(): void {
+    this.latestBlogsService.getLatestBlogs().subscribe(
+      (blogs: LatestBlog[]) => {
+        this.latestBlogs = blogs.map((blog: LatestBlog) => ({
+          ...blog,
+          sanitizedContent: this.sanitizeHtml(blog.content),
+        }));
+        this.isLoading = false;
+        console.log(blogs);
+      },
+      (error) => {
+        console.error('Error fetching latest blogs:', error);
+        this.isLoading = false;
+      }
+    );
   }
 
   // Helper method to add event listeners to carousel navigation buttons
