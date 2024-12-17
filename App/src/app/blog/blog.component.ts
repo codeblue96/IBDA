@@ -56,7 +56,6 @@ export class BlogComponent implements AfterViewInit, OnInit {
 
   // Lifecycle hook that runs after the component's view is initialized
   ngAfterViewInit(): void {
-    // Setup carousel functionality for the specified carousel ID
     this.setupCarousel('carouselExampleCaptions2');
   }
   fetchLatestBlogs(): void {
