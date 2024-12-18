@@ -11,10 +11,31 @@
   z-index: 1
 }
 
+.footer-nav-heading {
+  font-size: 0.9rem;
+}
+
+.footer-nav-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  padding-left: 20px;
+  /* Space for the bullet */
+  display: inline-block;
+  /* Ensure padding works properly */
+}
+
 .footer a {
   color: #fbfbfb;
   text-decoration: none;
-  font-size: 12px
+  font-size: 12px;
+}
+
+.footer-nav-link::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: rgb(255, 255, 255);
 }
 
 .logos a {

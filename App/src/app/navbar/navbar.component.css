@@ -35,8 +35,8 @@
 }
 
 img {
-  width: 7rem;
-  margin-top: -10px;
+  width: 5rem;
+  margin-top: -2px;
 }
 
 .navbar>.container-fluid {
@@ -84,6 +84,7 @@ img {
 
 .nav-item a {
   font-weight: 500;
+  font-size: 12px;
 }
 
 @media(max-width: 900px) {

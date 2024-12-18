@@ -2,6 +2,18 @@
   background-image: url('/assets/imgs/about-us.jpg');
 }
 
+
+.about-hero-section {
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  max-width: 92%;
+  height: 70vh;
+  margin: 10px auto;
+}
+
 span {
   font-weight: 600;
 }

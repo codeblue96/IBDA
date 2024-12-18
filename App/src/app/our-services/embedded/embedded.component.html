@@ -1,11 +1,11 @@
 <div class="mini-hero-sec bg-img">
-  <h2 class="page-title text-center fw-bold">
-    Embedded Systems & <br> IOT
+  <h2 class="page-title text-center lz">
+    Embedded Systems & <br> IoT
   </h2>
 </div>
 <section class="gradient-section py-5 ">
   <div class="d-flex flex-column">
-    <h3 class="mb-4 fw-medium">Services</h3>
+    <h3 class="mb-4 fw-medium lz">Services</h3>
     <owl-carousel-o [options]="customOptions1">
       <ng-container *ngFor="let slide of slidesStore">
         <ng-template carouselSlide [id]="slide.id">
@@ -24,7 +24,7 @@
   </div>
 
   <div class="d-flex flex-column mt-5">
-    <h3 class="mb-4 fw-medium">Industries</h3>
+    <h3 class="mb-4 fw-medium lz">Industries</h3>
     <owl-carousel-o [options]="customOptions1">
       <ng-container *ngFor="let slide of slidesStore2">
         <ng-template carouselSlide [id]="slide.id">
@@ -32,8 +32,8 @@
             <img [src]="slide.src" [alt]="slide.alt" />
             <div class="image-text-wrapper">
               <div class="overlay-text">
-                <h4>{{ slide.title }}</h4>
-                <p>{{ slide.description }}</p>
+                <h4 class="text-white slide-title">{{ slide.title }}</h4>
+                <p class="text-white slide-desc">{{ slide.description }}</p>
               </div>
             </div>
           </div>

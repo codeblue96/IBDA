@@ -52,21 +52,27 @@
   border-radius: 45px;
   /* Same radius as the container */
   padding: 3px;
-  /* Width of the gradient border */
-  background: linear-gradient(to right, #F2E89D, #9BE0C6, #F2E89D);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  /* Ensure only border area is visible */
-  mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+  /* Width of the border */
+  background: #e7e5e5;
+    /* Default border color */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   z-index: -1;
   /* Place behind the content */
+  transition: background 0.5s ease;
+  /* Smooth transition */
+}
+
+.blog-card:hover::before {
+  background: linear-gradient(to right, #F2E89D, #9BE0C6, #F2E89D);
+  /* Gradient on hover */
 }
 
 .cards-section {
-  padding: 0 7rem;
+  max-width: 92%;
+  margin: auto;
 }
 
 img {
@@ -84,6 +90,14 @@ button {
   background: none;
   color: #fff;
   float: right;
+  margin-right: 1.6rem;
+  transition: transform 0.6s ease;
+  /* Slow down to 0.6 seconds */
+}
+
+button:hover {
+  transform: translateX(10px);
+  /* Moves the button 10px to the right */
 }
 
 .vertical-line {
