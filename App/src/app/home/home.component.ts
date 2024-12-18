@@ -22,7 +22,7 @@ export class HomeComponent {
       id: '1',
       src: '/assets/imgs/bms.jpg',
       alt: 'Placeholder Image 1',
-      title: 'Embedded Systems',
+      title: 'BMS',
       description: 'Battery Management System Software Compliance',
     },
     {
