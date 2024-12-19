@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Blog, BlogService } from '../services/blog.service';
+import { Blog } from '../services/blog.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { GlobalApiService } from '../services/global-api.service';
 import {
   LatestBlog,
   LatestBlogsService,
@@ -21,24 +22,26 @@ export class BlogComponent implements AfterViewInit, OnInit {
   blogs: Blog[] = [];
   latestBlogs: LatestBlog[] = [];
   isLoading = true;
+  currentPage = 1; // Track the current page
 
   constructor(
-    private blogService: BlogService,
-    private latestBlogsService: LatestBlogsService,
+    private globalApiService: GlobalApiService,
     private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
-    this.fetchBlogs();
-    this.fetchLatestBlogs();
+    this.fetchBlogs(this.currentPage); // Fetch blogs for the current page
+    this.fetchLatestBlogs(1, 3); // Fetch blogs for the current page
+    // this.fetchLatestBlogs();
   }
 
   ngAfterViewInit(): void {
     this.setupCarousel('carouselExampleCaptions2');
   }
 
-  fetchBlogs(): void {
-    this.blogService.getBlogs().subscribe(
+  fetchBlogs(page: number, perPage: number = 5): void {
+    this.isLoading = true; // Show loading indicator
+    this.globalApiService.getBlogs(page, perPage).subscribe(
       (blogs) => {
         this.blogs = blogs.map((blog) => ({
           ...blog,
@@ -46,7 +49,7 @@ export class BlogComponent implements AfterViewInit, OnInit {
             blog.content
           ),
         }));
-        this.isLoading = false;
+        this.isLoading = false; // Hide loading indicator
       },
       (error) => {
         console.error('Error fetching blogs', error);
@@ -55,15 +58,25 @@ export class BlogComponent implements AfterViewInit, OnInit {
     );
   }
 
-  fetchLatestBlogs(): void {
-    this.latestBlogsService.getLatestBlogs().subscribe(
-      (blogs: LatestBlog[]) => {
-        this.latestBlogs = blogs.map((blog: LatestBlog) => ({
-          ...blog,
-          sanitizedContent: this.sanitizeHtml(blog.content),
-        }));
+  fetchLatestBlogs(page: number, perPage: number = 5): void {
+    this.isLoading = true;
+    this.globalApiService.getLatestBlogs(page, perPage).subscribe(
+      async (blogs: LatestBlog[]) => {
+        const enrichedBlogs = await Promise.all(
+          blogs.map(async (blog: LatestBlog) => {
+            const authorDetails = await this.globalApiService
+              .getAuthorById(blog.author)
+              .toPromise();
+            return {
+              ...blog,
+              author: authorDetails, // Replace author ID with full author details
+              sanitizedContent: this.sanitizeHtml(blog.content),
+            };
+          })
+        );
+        this.latestBlogs = enrichedBlogs;
+        console.log(enrichedBlogs);
         this.isLoading = false;
-        console.log(blogs);
       },
       (error) => {
         console.error('Error fetching latest blogs:', error);
@@ -97,5 +110,19 @@ export class BlogComponent implements AfterViewInit, OnInit {
 
   showBlogContent(blog: Blog): void {
     this.blogContent = this.sanitizeHtml(blog.content);
+  }
+
+  // Method to load the next page of blogs
+  loadNextPage(): void {
+    this.currentPage++;
+    this.fetchBlogs(this.currentPage);
+  }
+
+  // Method to load the previous page of blogs
+  loadPreviousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.fetchBlogs(this.currentPage);
+    }
   }
 }
