@@ -1,13 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Blog } from '../services/blog.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { GlobalApiService } from '../services/global-api.service';
-import {
-  LatestBlog,
-  LatestBlogsService,
-} from '../services/latest-blogs.service';
+import { GlobalApiService, GlobalBlogs } from '../services/global-api.service';
 
 @Component({
   selector: 'app-blog',
@@ -19,8 +14,8 @@ import {
 export class BlogComponent implements AfterViewInit, OnInit {
   blogContent: SafeHtml | null = null;
   latestBlogContent: SafeHtml | null = null;
-  blogs: Blog[] = [];
-  latestBlogs: LatestBlog[] = [];
+  latestBlogs: GlobalBlogs[] = [];
+  blogs: GlobalBlogs[] = [];
   isLoading = true;
   currentPage = 1; // Track the current page
 
@@ -61,9 +56,9 @@ export class BlogComponent implements AfterViewInit, OnInit {
   fetchLatestBlogs(page: number, perPage: number = 5): void {
     this.isLoading = true;
     this.globalApiService.getLatestBlogs(page, perPage).subscribe(
-      async (blogs: LatestBlog[]) => {
+      async (blogs: GlobalBlogs[]) => {
         const enrichedBlogs = await Promise.all(
-          blogs.map(async (blog: LatestBlog) => {
+          blogs.map(async (blog: GlobalBlogs) => {
             const authorDetails = await this.globalApiService
               .getAuthorById(blog.author)
               .toPromise();
@@ -74,8 +69,8 @@ export class BlogComponent implements AfterViewInit, OnInit {
             };
           })
         );
-        this.latestBlogs = enrichedBlogs;
         console.log(enrichedBlogs);
+        this.latestBlogs = enrichedBlogs;
         this.isLoading = false;
       },
       (error) => {
@@ -108,7 +103,7 @@ export class BlogComponent implements AfterViewInit, OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
-  showBlogContent(blog: Blog): void {
+  showBlogContent(blog: GlobalBlogs): void {
     this.blogContent = this.sanitizeHtml(blog.content);
   }
 

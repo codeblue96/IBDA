@@ -4,13 +4,14 @@ import { map, Observable } from 'rxjs';
 import { SafeHtml } from '@angular/platform-browser';
 
 // Interface for Blog data
-export interface Blog {
+export interface GlobalBlogs {
   id: number;
   title: string;
   content: string;
   img: string; // Image URL
   date: string; // Date when the blog was published
   author: string; // Author of the blog
+  author_name: string; // Author of the blog
   topic: string; // The topic/category of the blog
   sanitizedContent?: SafeHtml;
 }
@@ -28,18 +29,19 @@ export class GlobalApiService {
   constructor(private http: HttpClient) {}
 
   // Method to fetch blogs with a dynamic page parameter
-  getBlogs(page: number = 1, perPage: number = 5): Observable<Blog[]> {
+  getBlogs(page: number = 1, perPage: number = 5): Observable<GlobalBlogs[]> {
     const apiUrl = `${this.baseUrl}?page=${page}&per_page=${perPage}&order=desc&status=publish`;
     console.log(apiUrl);
     return this.http.get<any[]>(apiUrl).pipe(
       map((posts) =>
         posts.map((post) => {
-          const blog: Blog = {
+          const blog: GlobalBlogs = {
             id: post.id,
             title: post.title.rendered,
             content: post.content.rendered,
             date: post.date,
             author: post.author, // You may want to fetch author details if necessary
+            author_name: '', // You may want to fetch author details if necessary
             topic: post.topic, // Replace with real topic if available
             img: '', // Initialize as empty, will be populated later
           };
@@ -57,18 +59,22 @@ export class GlobalApiService {
   }
 
   // Method to fetch blogs with a dynamic page parameter
-  getLatestBlogs(page: number = 1, perPage: number = 5): Observable<Blog[]> {
+  getLatestBlogs(
+    page: number = 1,
+    perPage: number = 5
+  ): Observable<GlobalBlogs[]> {
     const apiUrl = `${this.baseUrl}?page=${page}&per_page=${perPage}&order=desc&status=publish`;
     console.log(apiUrl);
     return this.http.get<any[]>(apiUrl).pipe(
       map((posts) =>
         posts.map((post) => {
-          const blog: Blog = {
+          const blog: GlobalBlogs = {
             id: post.id,
             title: post.title.rendered,
             content: post.content.rendered,
             date: post.date,
             author: post.author, // You may want to fetch author details if necessary
+            author_name: '', // You may want to fetch author details if necessary
             topic: post.topic, // Replace with real topic if available
             img: '', // Initialize as empty, will be populated later
           };
@@ -79,19 +85,29 @@ export class GlobalApiService {
               blog.img = imageUrl; // Update img with the fetched URL
             });
           }
+
+          // Fetch image URL if featured_media exists
+          if (post.author && post.author > 0) {
+            // You need to subscribe to the observable to get the data
+            this.getAuthorById(post.author).subscribe((author) => {
+              // Update author name with the fetched data
+              blog.author_name = author.name; // Assuming the 'name' property exists in the 'author' object
+            });
+          }
+
           return blog;
         })
       )
     );
   }
 
-  getBlogById(id: string): Observable<Blog> {
-    return this.http.get<Blog>(`${this.baseUrl}/${id}`);
+  getBlogById(id: string): Observable<GlobalBlogs> {
+    return this.http.get<GlobalBlogs>(`${this.baseUrl}/${id}`);
   }
 
   getAuthorById(authorId: string): Observable<any> {
     // return this.http.get<any>(`/${authorId}`);
-    return this.http.get<Blog>(`${this.authorUrl}/${authorId}`);
+    return this.http.get<GlobalBlogs>(`${this.authorUrl}/${authorId}`);
   }
 
   // API call to fetch the image URL by featured_media ID
