@@ -35,7 +35,7 @@
 
 
     <!-- Carousel Controls -->
-    <!-- <div class="btns">
+    <div class="btns">
       <button class="" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
@@ -44,7 +44,7 @@
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-    </div> -->
+    </div>
   </div>
 </div>
 
@@ -64,7 +64,7 @@
           <div class="blog-info d-flex align-items-center">
             <div class="blog-date"><strong>Date:</strong> {{ blog.date | date: 'mediumDate' }}</div>
             <div class="vertical-line mx-2"></div>
-            <div class="author-name"><strong>Author:</strong> {{ blog.author }}</div>
+            <div class="author-name"><strong>Author:</strong> {{ blog.author_name }}</div>
             <div class="vertical-line mx-2"></div>
             <div class="blog-topic"><strong>Topic:</strong> {{ blog.topic }}</div>
           </div>
