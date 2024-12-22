@@ -8,18 +8,21 @@
               <img [src]="blog.img || '/assets/imgs/blog-hero.jpg'" [alt]="blog.title" class="img-fluid" />
             </div>
           </div>
+
+
           <div class="col-12 col-md-7 p-4 order-1 order-md-1">
             <div class="blog-info d-flex">
               <div class="blog-date">{{ blog.date | date: 'mediumDate' }}</div>
               <div class="vertical-line"></div>
-              <div class="author-name">{{ blog.author }}</div>
+              <div class="author-name">{{ blog.author_name }}</div>
               <div class="vertical-line"></div>
               <div class="blog-topic">{{ blog.topic }}</div>
             </div>
             <h3 class="blog-heading text-white fw-bold monda mt-3">
               {{ blog.title }}
             </h3>
-            <p class="blog-text text-white d-inline-block mt-5 truncated-content" [innerHTML]="blog.sanitizedContent"></p>
+            <p class="blog-text text-white d-inline-block mt-5 truncated-content" [innerHTML]="blog.sanitizedContent">
+            </p>
             <button class="read-more-btn" [routerLink]="['/blog-reading', blog.id]">
               Read More
             </button>
@@ -32,7 +35,7 @@
 
 
     <!-- Carousel Controls -->
-    <div class="btns">
+    <!-- <div class="btns">
       <button class="" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
@@ -41,7 +44,7 @@
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -74,16 +77,16 @@
 
   <nav aria-label="Page navigation example" class="mt-5">
     <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+      <li (click)="loadPreviousPage()" class="page-item">
+        <a class="page-link" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
       <li class="page-item"><a class="page-link" href="#">1</a></li>
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+      <li (click)="loadNextPage()" class="page-item">
+        <a class="page-link" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>

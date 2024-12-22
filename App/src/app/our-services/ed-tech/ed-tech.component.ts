@@ -14,6 +14,29 @@ export class EdTechComponent {
   slidesStore = [
     {
       id: '1',
+      src: '/assets/imgs/LMS.jpg',
+      alt: 'Placeholder Image 1',
+      title: 'LMS Development & Customization',
+      description: '',
+    },
+    {
+      id: '2',
+      src: '/assets/imgs/gamified.jpg',
+      alt: 'Placeholder Image 2',
+      title: 'Gamified Learning Solutions',
+      description: '',
+    },
+    {
+      id: '3',
+      src: '/assets/imgs/mlearning3.jpg',
+      alt: 'Placeholder Image 4',
+      title: 'Mobile Learning (mLearning)',
+      description: '',
+    },
+  ];
+  slidesStore2 = [
+    {
+      id: '1',
       src: '/assets/imgs/ed-tech-sec.jpg',
       alt: 'Placeholder Image 1',
       title: 'Education Sector',
@@ -38,30 +61,6 @@ export class EdTechComponent {
       src: '/assets/imgs/NGO.jpg',
       alt: 'Placeholder Image 4',
       title: 'NGOs & Nonprofits',
-      description: '',
-    },
-  ];
-
-  slidesStore2 = [
-    {
-      id: '1',
-      src: '/assets/imgs/LMS.jpg',
-      alt: 'Placeholder Image 1',
-      title: 'LMS Development & Customization',
-      description: '',
-    },
-    {
-      id: '2',
-      src: '/assets/imgs/gamified.jpg',
-      alt: 'Placeholder Image 2',
-      title: 'Gamified Learning Solutions',
-      description: '',
-    },
-    {
-      id: '3',
-      src: '/assets/imgs/mlearning3.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Mobile Learning (mLearning)',
       description: '',
     },
   ];

@@ -64,3 +64,9 @@
 .footer-main-nav {
   width: 9rem;
 }
+
+@media screen and (max-width: 425px) {
+  .footer-nav-link::before {
+    content: none;
+  }
+}

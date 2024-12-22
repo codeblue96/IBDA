@@ -88,9 +88,9 @@ export class HomeComponent {
     dots: false,
     navSpeed: 700,
     margin: 45,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
+    // autoplay: true,
+    // autoplayTimeout: 5000,
+    // autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
       0: {
@@ -116,9 +116,9 @@ export class HomeComponent {
     dots: false,
     navSpeed: 700,
     margin: 45,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
+    // autoplay: true,
+    // autoplayTimeout: 5000,
+    // autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
       0: {

@@ -27,7 +27,7 @@ export class AiMlComponent {
     },
     {
       id: '3',
-      src: '/assets/imgs/ComputerVision.png',
+      src: '/assets/imgs/ComputerVision.jpg',
       alt: 'Placeholder Image 3',
       title: 'Computer Vision',
       description: '',
@@ -85,7 +85,7 @@ export class AiMlComponent {
     },
     {
       id: '4',
-      src: '/assets/imgs/medical-devices2.png',
+      src: '/assets/imgs/medical-devices2.jpg',
       alt: 'Placeholder Image 4',
       title: 'Medical Devices',
       description: '',
@@ -106,7 +106,7 @@ export class AiMlComponent {
     },
     {
       id: '4',
-      src: '/assets/imgs/power-industry.png',
+      src: '/assets/imgs/power-industry.jpg',
       alt: 'Placeholder Image 4',
       title: 'Energy',
       description: '',

@@ -1,5 +1,5 @@
 .home-bg-img {
-  background-image: url('/assets/imgs/hero-img.jpeg');
+  background-image: url('/assets/imgs/hero-img.jpg');
 }
 
 .intro-text {
@@ -111,6 +111,15 @@
   }
 }
 
+.slide-title-home {
+  font-size: 0.8rem;
+  text-align: start;
+  padding-left: 1rem;
+  margin-top: 13rem;
+  width: 15rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+
+}
 
 .carousel-container {
   position: relative;
@@ -137,6 +146,6 @@
 }
 
 
-p {
-  font-size: 1rem;
+.slide-desc {
+  font-size: 1.3rem;
 }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LatestBlogsService } from './latest-blogs.service';
+import { GlobalApiService } from './global-api.service';
 
-describe('LatestBlogsService', () => {
-  let service: LatestBlogsService;
+describe('GlobalApiService', () => {
+  let service: GlobalApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LatestBlogsService);
+    service = TestBed.inject(GlobalApiService);
   });
 
   it('should be created', () => {
