@@ -95,6 +95,16 @@ export class GlobalApiService {
             });
           }
 
+
+          // Fetch image URL if featured_media exists
+          if (post.author && post.author > 0) {
+            // You need to subscribe to the observable to get the data
+            this.getAuthorById(post.author).subscribe((author) => {
+              // Update author name with the fetched data
+              blog.author_name = author.name; // Assuming the 'name' property exists in the 'author' object
+            });
+          }
+
           return blog;
         })
       )
@@ -106,6 +116,11 @@ export class GlobalApiService {
   }
 
   getAuthorById(authorId: string): Observable<any> {
+    // return this.http.get<any>(`/${authorId}`);
+    return this.http.get<GlobalBlogs>(`${this.authorUrl}/${authorId}`);
+  }
+
+  getCategoryById(authorId: string): Observable<any> {
     // return this.http.get<any>(`/${authorId}`);
     return this.http.get<GlobalBlogs>(`${this.authorUrl}/${authorId}`);
   }

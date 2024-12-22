@@ -64,7 +64,7 @@
   max-width: 92%;
   height: 70vh;
   padding: 3.5rem 0;
-  margin: 10px auto;
+  margin: 0px auto;
   align-content: center;
 
 }
@@ -217,6 +217,7 @@ p {
 }
 
 .slide-title {
+  font-size: 1.4rem;
   text-align: start;
   padding-left: 1rem;
   margin-top: 13rem;
