@@ -45,6 +45,7 @@ export class BlogComponent implements AfterViewInit, OnInit {
           ),
         }));
         this.isLoading = false; // Hide loading indicator
+        console.log(blogs);
       },
       (error) => {
         console.error('Error fetching blogs', error);
