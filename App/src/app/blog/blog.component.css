@@ -54,8 +54,8 @@
   padding: 3px;
   /* Width of the border */
   background: #e7e5e5;
-    /* Default border color */
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  /* Default border color */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -236,3 +236,4 @@ body {
   line-height: 1.5;
   max-height: 4.5em;
 }
+

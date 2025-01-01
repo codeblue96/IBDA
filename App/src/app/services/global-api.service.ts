@@ -8,10 +8,12 @@ export interface GlobalBlogs {
   id: number;
   title: string;
   content: string;
+  contentarray: [];
   img: string; // Image URL
   date: string; // Date when the blog was published
   author: string;
   author_name: string;
+  category: string[]; // Now this will hold the category names as strings
   topic: string; // The topic/category of the blog
   sanitizedContent?: SafeHtml;
 }
@@ -22,6 +24,7 @@ export interface GlobalBlogs {
 export class GlobalApiService {
   mainUrl: string = 'https://wp.ibda.dev';
 
+  // private singleblog = this.mainUrl + '/wp-json/wp/v2/posts/blogId'; // Base API URL
   private baseUrl = this.mainUrl + '/wp-json/wp/v2/posts'; // Base API URL
   private authorUrl = this.mainUrl + '/wp-json/wp/v2/users'; // Author API URL
   private mediaApiUrl = this.mainUrl + '/wp-json/wp/v2/media'; // Media API URL
@@ -31,7 +34,6 @@ export class GlobalApiService {
   // Fetch blogs with a dynamic page parameter
   getBlogs(page: number = 1, perPage: number = 5): Observable<GlobalBlogs[]> {
     const apiUrl = `${this.baseUrl}?page=${page}&per_page=${perPage}&order=desc&status=publish`;
-    console.log(apiUrl);
     return this.http
       .get<any[]>(apiUrl)
       .pipe(map((posts) => posts.map((post) => this.processPost(post))));
@@ -47,7 +49,11 @@ export class GlobalApiService {
 
   // Fetch a single blog by ID
   getBlogById(id: string): Observable<GlobalBlogs> {
-    return this.http.get<GlobalBlogs>(`${this.baseUrl}/${id}`);
+    const apiUrl = `${this.baseUrl}/${id}`;
+    return this.http
+      .get<GlobalBlogs>(apiUrl)
+      .pipe(map((post) => this.processPost(post)));
+    // return this.http.get<GlobalBlogs>(`${this.baseUrl}/${id}`);
   }
 
   // Fetch author by ID
@@ -75,25 +81,14 @@ export class GlobalApiService {
       content: post.content.rendered,
       date: post.date,
       author: post.author,
-      author_name: post.author_name, // Will be updated later
-      topic: post.topic || '', // Replace with real topic if available
-      img: '', // Will be updated later
+      author_name: post.author_details.author_first_name,
+      topic: post.topic,
+      contentarray: post.content.rendered,
+      category: Array.isArray(post.additional_details.categories)
+        ? post.additional_details.categories.join(' | ').trim()
+        : post.additional_details.categories,
+      img: post.additional_details.featured_image,
     };
-
-    // Fetch the image URL if featured_media exists
-    if (post.featured_media) {
-      this.fetchImageUrl(post.featured_media).subscribe((imageUrl) => {
-        blog.img = imageUrl;
-      });
-    }
-
-    // Fetch the author name if author ID exists
-    if (post.author) {
-      this.getAuthorById(post.author).subscribe((author) => {
-        blog.author_name = author.name; // Assuming the 'name' property exists
-      });
-    }
-
     return blog;
   }
 }
