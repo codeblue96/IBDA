@@ -16,7 +16,7 @@
               <div class="vertical-line"></div>
               <div class="author-name">{{ blog.author_name }}</div>
               <div class="vertical-line"></div>
-              <div class="blog-topic">{{ blog.topic }}</div>
+              <div class="blog-topic">{{ blog.category }}</div>
             </div>
             <h3 class="blog-heading text-white fw-bold monda mt-3">
               {{ blog.title }}
@@ -66,7 +66,7 @@
             <div class="vertical-line mx-2"></div>
             <div class="author-name"><strong>Author:</strong> {{ blog.author_name }}</div>
             <div class="vertical-line mx-2"></div>
-            <div class="blog-topic"><strong>Topic:</strong> {{ blog.topic }}</div>
+            <div class="blog-topic"><strong>Topic:</strong> {{ blog.category }}</div>
           </div>
           <h3 class="blog-heading mt-2">{{ blog.title }}</h3>
           <p [innerHTML]="blog.sanitizedContent" class="blog-text mt-2 truncated-content"></p>
