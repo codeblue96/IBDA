@@ -5,8 +5,8 @@
         Spark"</h1>
     </div>
   </div>
-
 </div>
+
 <div class="logo-slider">
   <div class="logo-track">
     <img *ngFor="let logo of logos" [src]="logo" alt="Company Logo" class="logo" />
@@ -14,14 +14,15 @@
   </div>
 </div>
 
-<section class="gradient-section py-5 ">
+<section class="gradient-section py-5">
+  <!-- Stories Section -->
   <div class="d-flex flex-column">
     <h3 class="mb-4 fw-medium lz">Stories that <br> shape our <br> journey</h3>
     <owl-carousel-o [options]="customOptions1">
       <ng-container *ngFor="let slide of slidesStore">
         <ng-template carouselSlide [id]="slide.id">
           <div class="slide-container">
-            <img [src]="slide.src" [alt]="slide.alt" />
+            <img [src]="slide.thumbnail" [alt]="slide.title" />
             <div class="image-text-wrapper">
               <div class="overlay-text">
                 <h4 class="text-white slide-title-home monda">{{ slide.title }}</h4>
@@ -34,13 +35,14 @@
     </owl-carousel-o>
   </div>
 
+  <!-- Ongoing Projects Section -->
   <div class="d-flex flex-column mt-5">
     <h3 class="mb-4 fw-medium lz">Ongoing <br> projects</h3>
-    <owl-carousel-o [options]="customOptions1">
+    <owl-carousel-o [options]="customOptions2">
       <ng-container *ngFor="let slide of slidesStore2">
         <ng-template carouselSlide [id]="slide.id">
           <div class="slide-container">
-            <img [src]="slide.src" [alt]="slide.alt" />
+            <img [src]="slide.thumbnail" [alt]="slide.title" />
             <div class="image-text-wrapper">
               <div class="overlay-text">
                 <h4 class="text-white slide-title-home monda">{{ slide.title }}</h4>

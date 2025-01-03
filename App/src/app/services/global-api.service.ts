@@ -3,19 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { SafeHtml } from '@angular/platform-browser';
 
-// Interface for Blog data
 export interface GlobalBlogs {
   id: number;
   title: string;
   content: string;
   contentarray: [];
-  img: string; // Image URL
-  date: string; // Date when the blog was published
+  img: string;
+  date: string;
   author: string;
   author_name: string;
-  category: string[]; // Now this will hold the category names as strings
-  topic: string; // The topic/category of the blog
+  category: string[];
+  topic: string;
   sanitizedContent?: SafeHtml;
+}
+
+export interface GlobalSlider {
+  id: number;
+  thumbnail: string;
+  largeImg: string;
+  desc: string;
+  title: string;
 }
 
 @Injectable({
@@ -23,15 +30,13 @@ export interface GlobalBlogs {
 })
 export class GlobalApiService {
   mainUrl: string = 'https://wp.ibda.dev';
-
-  // private singleblog = this.mainUrl + '/wp-json/wp/v2/posts/blogId'; // Base API URL
-  private baseUrl = this.mainUrl + '/wp-json/wp/v2/posts'; // Base API URL
-  private authorUrl = this.mainUrl + '/wp-json/wp/v2/users'; // Author API URL
-  private mediaApiUrl = this.mainUrl + '/wp-json/wp/v2/media'; // Media API URL
+  private baseUrl = this.mainUrl + '/wp-json/wp/v2/posts';
+  private authorUrl = this.mainUrl + '/wp-json/wp/v2/users';
+  private mediaApiUrl =
+    this.mainUrl + '/wp-json/wp/v2/media?type=image&category=';
 
   constructor(private http: HttpClient) {}
 
-  // Fetch blogs with a dynamic page parameter
   getBlogs(page: number = 1, perPage: number = 5): Observable<GlobalBlogs[]> {
     const apiUrl = `${this.baseUrl}?page=${page}&per_page=${perPage}&order=desc&status=publish`;
     return this.http
@@ -39,7 +44,6 @@ export class GlobalApiService {
       .pipe(map((posts) => posts.map((post) => this.processPost(post))));
   }
 
-  // Fetch latest blogs (uses the same API as getBlogs)
   getLatestBlogs(
     page: number = 1,
     perPage: number = 5
@@ -47,35 +51,41 @@ export class GlobalApiService {
     return this.getBlogs(page, perPage);
   }
 
-  // Fetch a single blog by ID
   getBlogById(id: string): Observable<GlobalBlogs> {
     const apiUrl = `${this.baseUrl}/${id}`;
     return this.http
       .get<GlobalBlogs>(apiUrl)
       .pipe(map((post) => this.processPost(post)));
-    // return this.http.get<GlobalBlogs>(`${this.baseUrl}/${id}`);
   }
 
-  // Fetch author by ID
   getAuthorById(authorId: string): Observable<any> {
     return this.http.get<any>(`${this.authorUrl}/${authorId}`);
   }
 
-  // Fetch category by ID
   getCategoryById(categoryId: string): Observable<any> {
     return this.http.get<any>(`${this.authorUrl}/${categoryId}`);
   }
 
-  // Fetch the image URL by featured_media ID
-  private fetchImageUrl(mediaId: number): Observable<string> {
-    return this.http.get<any>(`${this.mediaApiUrl}/${mediaId}`).pipe(
-      map((media) => media.source_url) // Extract the image URL from the response
+  fetchSliderImageUrl(category: string): Observable<GlobalSlider[]> {
+    console.log(category);
+    return this.http.get<any[]>(`${this.mediaApiUrl}${category}`).pipe(
+      map((mediaArray) =>
+        mediaArray.map((media) => ({
+          id: media.id,
+          thumbnail: media?.media_details?.sizes?.full?.source_url || '', // Default to empty string if undefined
+          largeImg:
+            media?.media_details?.sizes?.large?.source_url ||
+            media?.source_url ||
+            '', // Default to empty string if undefined
+          desc: 'blank',
+          title: 'dummy data',
+        }))
+      )
     );
   }
 
-  // Helper method to process a single post
   private processPost(post: any): GlobalBlogs {
-    const blog: GlobalBlogs = {
+    return {
       id: post.id,
       title: post.title.rendered,
       content: post.content.rendered,
@@ -89,6 +99,5 @@ export class GlobalApiService {
         : post.additional_details.categories,
       img: post.additional_details.featured_image,
     };
-    return blog;
   }
 }
