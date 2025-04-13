@@ -14,6 +14,16 @@ export interface GlobalBlogs {
   author_name: string;
   category: string[];
   topic: string;
+  // totalBlogs: number;
+  sanitizedContent?: SafeHtml;
+}
+export interface GlobalProjects {
+  id: number;
+  title: string;
+  content: string;
+  contentarray: [];
+  img: string;
+  category: string[];
   sanitizedContent?: SafeHtml;
 }
 
@@ -33,15 +43,19 @@ export class GlobalApiService {
   private baseUrl = this.mainUrl + '/wp-json/wp/v2/posts';
   private authorUrl = this.mainUrl + '/wp-json/wp/v2/users';
   private mediaApiUrl =
-    this.mainUrl + '/wp-json/wp/v2/media?type=image&category=';
+    this.mainUrl + '/wp-json/wp/v2/media?type=image&media_category=';
 
   constructor(private http: HttpClient) {}
 
   getBlogs(page: number = 1, perPage: number = 5): Observable<GlobalBlogs[]> {
     const apiUrl = `${this.baseUrl}?page=${page}&per_page=${perPage}&order=desc&status=publish`;
-    return this.http
-      .get<any[]>(apiUrl)
-      .pipe(map((posts) => posts.map((post) => this.processPost(post))));
+
+    return this.http.get<any[]>(apiUrl, { observe: 'response' }).pipe(
+      map((response) => {
+        const body = response.body || []; // Fallback to an empty array
+        return body.map((post) => this.processPost(post)); // Only return blogs array
+      })
+    );
   }
 
   getLatestBlogs(
@@ -52,6 +66,12 @@ export class GlobalApiService {
   }
 
   getBlogById(id: string): Observable<GlobalBlogs> {
+    const apiUrl = `${this.baseUrl}/${id}`;
+    return this.http
+      .get<GlobalBlogs>(apiUrl)
+      .pipe(map((post) => this.processPost(post)));
+  }
+  getProjectById(id: string): Observable<GlobalBlogs> {
     const apiUrl = `${this.baseUrl}/${id}`;
     return this.http
       .get<GlobalBlogs>(apiUrl)
@@ -77,8 +97,8 @@ export class GlobalApiService {
             media?.media_details?.sizes?.large?.source_url ||
             media?.source_url ||
             '', // Default to empty string if undefined
-          desc: 'blank',
-          title: 'dummy data',
+          title: media?.title || '',
+          desc: media?.description || '',
         }))
       )
     );

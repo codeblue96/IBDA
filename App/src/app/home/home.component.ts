@@ -62,8 +62,8 @@ export class HomeComponent implements OnInit {
   constructor(private globalApiService: GlobalApiService) {}
 
   ngOnInit(): void {
-    this.fetchSliderImages('slider-ongoing-projects'); // Fetch first category
-    this.fetchSliderImages('slider-stories-that-shape-our-journey'); // Fetch second category
+    this.fetchSliderImages('slider-ongoing-projects');
+    this.fetchSliderImages('slider-stories-that-shape-our-journey');
   }
 
   fetchSliderImages(category: string): void {
@@ -81,9 +81,9 @@ export class HomeComponent implements OnInit {
         console.log(slides);
         // Conditionally store images based on category
         if (category === 'slider-ongoing-projects') {
-          this.slidesStore = slides.slice(0, 4);
+          this.slidesStore2 = slides.slice(0, 4);
         } else if (category === 'slider-stories-that-shape-our-journey') {
-          this.slidesStore2 = slides.slice(0, 4); // Or any other specific slice you need
+          this.slidesStore = slides.slice(0, 4); // Or any other specific slice you need
         }
 
         // console.log(

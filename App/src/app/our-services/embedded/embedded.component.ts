@@ -2,6 +2,10 @@ import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {
+  GlobalApiService,
+  GlobalSlider,
+} from '../../services/global-api.service';
 @Component({
   selector: 'app-embedded',
   standalone: true,
@@ -10,80 +14,12 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrl: './embedded.component.css',
 })
 export class EmbeddedComponent {
-  slidesStore = [
-    {
-      id: '1',
-      src: '/assets/imgs/embeddeds.jpg',
-      alt: 'Placeholder Image 1',
-      title: 'Microcontrollers Programming',
-      description: '',
-    },
-    {
-      id: '2',
-      src: '/assets/imgs/RTOS.jpg',
-      alt: 'Placeholder Image 2',
-      title: 'RTOS',
-      description: '',
-    },
-    {
-      id: '3',
-      src: '/assets/imgs/Embedded-linux.jpg',
-      alt: 'Placeholder Image 3',
-      title: 'Embedded Linux',
-      description: '',
-    },
-    {
-      id: '4',
-      src: '/assets/imgs/SOC.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'SoC Development',
-      description: '',
-    },
-    {
-      id: '5',
-      src: '/assets/imgs/ROS2.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'ROS',
-      description: '',
-    },
-  ];
-
-  slidesStore1 = [
-    {
-      id: '1',
-      src: '/assets/imgs/automotive-embedded.png',
-      alt: 'Placeholder Image 1',
-      title: 'Automotive Embedded',
-      description: '',
-    },
-    {
-      id: '2',
-      src: '/assets/imgs/avionics.jpg',
-      alt: 'Placeholder Image 2',
-      title: 'Avionics',
-      description: '',
-    },
-    {
-      id: '3',
-      src: '/assets/imgs/medical-devices.jpg',
-      alt: 'Placeholder Image 3',
-      title: 'Medical Devices',
-      description: '',
-    },
-    {
-      id: '4',
-      src: '/assets/imgs/bms12.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'BMS',
-      description: '',
-    },
-    {
-      id: '5',
-      src: '/assets/imgs/IIOT.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'IIoT',
-      description: '',
-    },
+  isLoading = true;
+  sliderImgs: GlobalSlider[] = [];
+  logos: string[] = [
+    'assets/imgs/logos/company-1.png',
+    'assets/imgs/logos/company-2.png',
+    'assets/imgs/logos/company-3.png',
   ];
 
   customOptions1: OwlOptions = {
@@ -94,26 +30,16 @@ export class EmbeddedComponent {
     dots: false,
     navSpeed: 700,
     margin: 45,
-    // autoplay: true,
-    // autoplayTimeout: 5000,
-    // autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 3,
-      },
+      0: { items: 1 },
+      400: { items: 2 },
+      740: { items: 3 },
+      940: { items: 3 },
     },
     nav: true,
   };
+
   customOptions2: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -122,24 +48,57 @@ export class EmbeddedComponent {
     dots: false,
     navSpeed: 700,
     margin: 45,
-    // autoplay: true,
-    // autoplayTimeout: 5000,
-    // autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 3,
-      },
+      0: { items: 1 },
+      400: { items: 2 },
+      740: { items: 3 },
+      940: { items: 3 },
     },
     nav: true,
   };
+
+  slidesStore: any[] = [];
+  slidesStore2: any[] = [];
+
+  constructor(private globalApiService: GlobalApiService) {}
+
+  ngOnInit(): void {
+    this.fetchSliderImages('services-embedded-systems-iot');
+    this.fetchSliderImages('industries-embedded-systems-iot');
+  }
+
+  fetchSliderImages(category: string): void {
+    this.isLoading = true;
+    this.globalApiService.fetchSliderImageUrl(category).subscribe({
+      next: (sliderImgs: GlobalSlider[]) => {
+        // console.log(category);
+        const slides = sliderImgs.map((img) => ({
+          id: img.id,
+          largeImg: img.largeImg,
+          title: img.title || 'Untitled',
+          description: img.desc || 'No description available',
+          thumbnail: img.thumbnail,
+        }));
+        console.log(slides);
+        // Conditionally store images based on category
+        this.slidesStore2 = slides.slice(0, 4);
+        if (category === 'industries-embedded-systems-iot') {
+        } else if (category === 'services-embedded-systems-iot') {
+          this.slidesStore = slides.slice(0, 4); // Or any other specific slice you need
+        }
+
+        // console.log(
+        //   `Sanitized slider images for category ${category}:`,
+        //   slides
+        // );
+      },
+      error: (error) => {
+        console.error('Error fetching slider images:', error);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
 }

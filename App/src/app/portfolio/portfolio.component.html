@@ -3,7 +3,7 @@
     Project<br> Stories
   </h2>
 </div>
-<div class="project-card mt-5">
+<div class="project-card mt-5" *ngFor="let blog of latestBlogs; let i = index">
   <div class="row d-flex flex-column flex-md-row">
     <div class="col-12 col-md-4 order-0 order-md-0">
       <div class="project-img">
@@ -24,7 +24,7 @@
           unde, porro voluptate quo ad. Labore, fuga explicabo!
         </div>
       </div>
-      <button class="text-white read-more-btn">Read More</button>
+      <button class="text-white read-more-btn" [routerLink]="['/blog-reading', blog.id]">Read More</button>
     </div>
   </div>
 
@@ -33,16 +33,16 @@
 
 <nav aria-label="Page navigation example" class="mt-5">
   <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+    <li (click)="loadPreviousPage()" class="page-item">
+      <a class="page-link" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+    <li (click)="loadNextPage()" class="page-item">
+      <a class="page-link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

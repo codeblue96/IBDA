@@ -2,6 +2,10 @@ import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {
+  GlobalApiService,
+  GlobalSlider,
+} from '../../services/global-api.service';
 
 @Component({
   selector: 'app-web-dev',
@@ -11,142 +15,12 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrl: './web-dev.component.css',
 })
 export class WebDevComponent {
-  slidesStore = [
-    {
-      id: '1',
-      src: '/assets/imgs/iOS dev2.jpg',
-      alt: 'Placeholder Image 1',
-      title: 'iOS',
-      description: '',
-    },
-    {
-      id: '2',
-      src: '/assets/imgs/android3.jpg',
-      alt: 'Placeholder Image 2',
-      title: 'Android',
-      description: '',
-    },
-    {
-      id: '3',
-      src: '/assets/imgs/cross-palatform.jpg',
-      alt: 'Placeholder Image 3',
-      title: 'CrossPlatform',
-      description: '',
-    },
-    {
-      id: '4',
-      src: '/assets/imgs/pwa.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'PWAs (Progressive Web Apps)',
-      description: '',
-    },
-    {
-      id: '5',
-      src: '/assets/imgs/uiux5.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'UI/UX Design',
-      description: '',
-    },
-    {
-      id: '6',
-      src: '/assets/imgs/Fullstack.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Full-Stack Development',
-      description: '',
-    },
-    {
-      id: '7',
-      src: '/assets/imgs/web (2).jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Custom Web Apps',
-      description: '',
-    },
-    {
-      id: '8',
-      src: '/assets/imgs/web development.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Desktop Apps',
-      description: '',
-    },
-    {
-      id: '9',
-      src: '/assets/imgs/Cloud.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Cloud Apps',
-      description: '',
-    },
-  ];
-  slidesStore1 = [
-    {
-      id: '1',
-      src: '/assets/imgs/e-commerce.jpg',
-      alt: 'Placeholder Image 1',
-      title: 'E-Commerce',
-      description: '',
-    },
-    {
-      id: '2',
-      src: '/assets/imgs/healthcare4.jpg',
-      alt: 'Placeholder Image 2',
-      title: 'Healthcare',
-      description: '',
-    },
-    {
-      id: '3',
-      src: '/assets/imgs/finance3.jpg',
-      alt: 'Placeholder Image 3',
-      title: 'Finance',
-      description: '',
-    },
-    {
-      id: '4',
-      src: '/assets/imgs/Entertainment.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Entertainment',
-      description: '',
-    },
-    {
-      id: '5',
-      src: '/assets/imgs/edu-2.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Education',
-      description: '',
-    },
-    {
-      id: '6',
-      src: '/assets/imgs/SaaS2.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'SaaS Platforms',
-      description: '',
-    },
-    {
-      id: '7',
-      src: '/assets/imgs/crm3.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'CRM & ERP',
-      description: '',
-    },
-    {
-      id: '8',
-      src: '/assets/imgs/fintech.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'FinTech',
-      description: '',
-    },
-    {
-      id: '9',
-      src: '/assets/imgs/logistics-1.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Logistics',
-      description: '',
-    },
-    {
-      id: '10',
-      src: '/assets/imgs/Hospitality.jpg',
-      alt: 'Placeholder Image 4',
-      title: 'Hospitality',
-      description: '',
-    },
+  isLoading = true;
+  sliderImgs: GlobalSlider[] = [];
+  logos: string[] = [
+    'assets/imgs/logos/company-1.png',
+    'assets/imgs/logos/company-2.png',
+    'assets/imgs/logos/company-3.png',
   ];
 
   customOptions1: OwlOptions = {
@@ -157,26 +31,16 @@ export class WebDevComponent {
     dots: false,
     navSpeed: 700,
     margin: 45,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 3,
-      },
+      0: { items: 1 },
+      400: { items: 2 },
+      740: { items: 3 },
+      940: { items: 3 },
     },
     nav: true,
   };
+
   customOptions2: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -185,24 +49,57 @@ export class WebDevComponent {
     dots: false,
     navSpeed: 700,
     margin: 45,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
     navText: ['<', '>'],
     responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 3,
-      },
+      0: { items: 1 },
+      400: { items: 2 },
+      740: { items: 3 },
+      940: { items: 3 },
     },
     nav: true,
   };
+
+  slidesStore: any[] = [];
+  slidesStore2: any[] = [];
+
+  constructor(private globalApiService: GlobalApiService) {}
+
+  ngOnInit(): void {
+    this.fetchSliderImages('services-web-mobile-app-development');
+    this.fetchSliderImages('industries-web-mobile-app-development');
+  }
+
+  fetchSliderImages(category: string): void {
+    this.isLoading = true;
+    this.globalApiService.fetchSliderImageUrl(category).subscribe({
+      next: (sliderImgs: GlobalSlider[]) => {
+        // console.log(category);
+        const slides = sliderImgs.map((img) => ({
+          id: img.id,
+          largeImg: img.largeImg,
+          title: img.title || 'Untitled',
+          description: img.desc || 'No description available',
+          thumbnail: img.thumbnail,
+        }));
+        console.log(slides);
+        // Conditionally store images based on category
+        this.slidesStore2 = slides.slice(0, 4);
+        if (category === 'industries-web-mobile-app-development') {
+        } else if (category === 'services-web-mobile-app-development') {
+          this.slidesStore = slides.slice(0, 4); // Or any other specific slice you need
+        }
+
+        // console.log(
+        //   `Sanitized slider images for category ${category}:`,
+        //   slides
+        // );
+      },
+      error: (error) => {
+        console.error('Error fetching slider images:', error);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
 }

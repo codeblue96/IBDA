@@ -100,6 +100,9 @@ export class BlogComponent implements AfterViewInit, OnInit {
     this.blogContent = this.sanitizeHtml(blog.content);
   }
 
+  loadPage(pageNumber: number) {
+    this.fetchBlogs(pageNumber);
+  }
   loadNextPage(): void {
     this.currentPage++;
     this.fetchBlogs(this.currentPage);
